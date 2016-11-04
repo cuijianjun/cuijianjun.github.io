@@ -1,0 +1,765 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>面向对象第四天 | 1000 words a Day</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Coldfont">
+    
+
+    
+    <meta name="description" content="面向对象的三大特征
+js中的封装，就是把一堆相关性的变量和函数组织到一起。
+js中的继承，就是原型。
+js中的多态，可以理解是对象的动态变化。
+
+for in
+for in 可以遍历出一个对像继承的属性（必须是可枚举的）
+
+静态成员和实例成员静态成员(类成员)
+直接添加给类(构造函数)的属性和方法，称之为静态成员
+特点:
+
+不需要创建实例即可通过类调用
+
+
+实例成员
+添加给实例的属性和方法，称之为">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象第四天">
+<meta property="og:url" content="http://yoursite.com/2015/01/14/面向对象参考/面向对象第四天/index.html">
+<meta property="og:site_name" content="1000 words a Day">
+<meta property="og:description" content="面向对象的三大特征
+js中的封装，就是把一堆相关性的变量和函数组织到一起。
+js中的继承，就是原型。
+js中的多态，可以理解是对象的动态变化。
+
+for in
+for in 可以遍历出一个对像继承的属性（必须是可枚举的）
+
+静态成员和实例成员静态成员(类成员)
+直接添加给类(构造函数)的属性和方法，称之为静态成员
+特点:
+
+不需要创建实例即可通过类调用
+
+
+实例成员
+添加给实例的属性和方法，称之为">
+<meta property="og:updated_time" content="2016-11-04T13:36:40.967Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面向对象第四天">
+<meta name="twitter:description" content="面向对象的三大特征
+js中的封装，就是把一堆相关性的变量和函数组织到一起。
+js中的继承，就是原型。
+js中的多态，可以理解是对象的动态变化。
+
+for in
+for in 可以遍历出一个对像继承的属性（必须是可枚举的）
+
+静态成员和实例成员静态成员(类成员)
+直接添加给类(构造函数)的属性和方法，称之为静态成员
+特点:
+
+不需要创建实例即可通过类调用
+
+
+实例成员
+添加给实例的属性和方法，称之为">
+
+    
+    <link rel="alternative" href="/atom.xml" title="1000 words a Day" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="1000 words a Day" title="1000 words a Day"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="1000 words a Day">1000 words a Day</a></h1>
+				<h2 class="blog-motto">Writing 1000 Words a Day Changes My Life</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/01/14/面向对象参考/面向对象第四天/" title="面向对象第四天" itemprop="url">面向对象第四天</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Coldfont" target="_blank" itemprop="author">Coldfont</a>
+		
+  <p class="article-time">
+    <time datetime="2015-01-14T12:37:51.000Z" itemprop="datePublished"> 发表于 2015-01-14</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象的三大特征"><span class="toc-number">1.</span> <span class="toc-text">面向对象的三大特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for-in"><span class="toc-number">2.</span> <span class="toc-text">for in</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态成员和实例成员"><span class="toc-number">3.</span> <span class="toc-text">静态成员和实例成员</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#静态成员-类成员"><span class="toc-number">3.1.</span> <span class="toc-text">静态成员(类成员)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例成员"><span class="toc-number">3.2.</span> <span class="toc-text">实例成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JQuery分析"><span class="toc-number">3.3.</span> <span class="toc-text">JQuery分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么情况下会用到静态成员"><span class="toc-number">3.4.</span> <span class="toc-text">什么情况下会用到静态成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Object原型上常用的几个方法"><span class="toc-number">3.5.</span> <span class="toc-text">Object原型上常用的几个方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数默认的原型对象的类型"><span class="toc-number">3.6.</span> <span class="toc-text">函数默认的原型对象的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数的几个属性"><span class="toc-number">3.7.</span> <span class="toc-text">函数的几个属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#in运算符"><span class="toc-number">3.8.</span> <span class="toc-text">in运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#delete运算符"><span class="toc-number">3.9.</span> <span class="toc-text">delete运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Function使用"><span class="toc-number">3.10.</span> <span class="toc-text">Function使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eval用法"><span class="toc-number">3.11.</span> <span class="toc-text">eval用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预解析"><span class="toc-number">3.12.</span> <span class="toc-text">预解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#变量声明"><span class="toc-number">3.12.1.</span> <span class="toc-text">变量声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数声明"><span class="toc-number">3.12.2.</span> <span class="toc-text">函数声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#预解析时变量重名的处理"><span class="toc-number">3.12.3.</span> <span class="toc-text">预解析时变量重名的处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#预解析时对函数重名的处理"><span class="toc-number">3.12.4.</span> <span class="toc-text">预解析时对函数重名的处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#预解析时对函数与变量重名的处理"><span class="toc-number">3.12.5.</span> <span class="toc-text">预解析时对函数与变量重名的处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数声明定义在代码块中"><span class="toc-number">3.12.6.</span> <span class="toc-text">函数声明定义在代码块中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数在执行时内部也存在预解析"><span class="toc-number">3.12.7.</span> <span class="toc-text">函数在执行时内部也存在预解析</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域"><span class="toc-number">4.</span> <span class="toc-text">作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何检测一个变量的作用"><span class="toc-number">4.1.</span> <span class="toc-text">如何检测一个变量的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全局变量"><span class="toc-number">4.2.</span> <span class="toc-text">全局变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#局部变量"><span class="toc-number">4.3.</span> <span class="toc-text">局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#补充"><span class="toc-number">4.4.</span> <span class="toc-text">补充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数作用域"><span class="toc-number">4.5.</span> <span class="toc-text">函数作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#词法作用域"><span class="toc-number">4.6.</span> <span class="toc-text">词法作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#补充-1"><span class="toc-number">4.7.</span> <span class="toc-text">补充</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#动态作用域"><span class="toc-number">4.7.1.</span> <span class="toc-text">动态作用域</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作用域链"><span class="toc-number">4.8.</span> <span class="toc-text">作用域链</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="面向对象的三大特征"><a href="#面向对象的三大特征" class="headerlink" title="面向对象的三大特征"></a>面向对象的三大特征</h2><ul>
+<li>js中的封装，就是把一堆相关性的变量和函数组织到一起。</li>
+<li>js中的继承，就是原型。</li>
+<li>js中的多态，可以理解是对象的动态变化。</li>
+</ul>
+<h2 id="for-in"><a href="#for-in" class="headerlink" title="for in"></a>for in</h2><blockquote>
+<p>for in 可以遍历出一个对像继承的属性（必须是可枚举的）</p>
+</blockquote>
+<h2 id="静态成员和实例成员"><a href="#静态成员和实例成员" class="headerlink" title="静态成员和实例成员"></a>静态成员和实例成员</h2><h3 id="静态成员-类成员"><a href="#静态成员-类成员" class="headerlink" title="静态成员(类成员)"></a>静态成员(类成员)</h3><blockquote>
+<p>直接添加给类(构造函数)的属性和方法，称之为静态成员</p>
+<p>特点:</p>
+<ul>
+<li>不需要创建实例即可通过类调用</li>
+</ul>
+</blockquote>
+<h3 id="实例成员"><a href="#实例成员" class="headerlink" title="实例成员"></a>实例成员</h3><blockquote>
+<p>添加给实例的属性和方法，称之为实例成员。</p>
+<p>添加到原型中的属性和方法，本意是让实例使用的所以也可以理解为实例成员。</p>
+</blockquote>
+<h3 id="JQuery分析"><a href="#JQuery分析" class="headerlink" title="JQuery分析"></a>JQuery分析</h3><p>在JQuery中</p>
+<ul>
+<li>$.ajax 为静态成员</li>
+<li>$(“element”).css();这里面css方法就是实例成员</li>
+</ul>
+<h3 id="什么情况下会用到静态成员"><a href="#什么情况下会用到静态成员" class="headerlink" title="什么情况下会用到静态成员"></a>什么情况下会用到静态成员</h3><ul>
+<li>如果一些属性和类的关联性比较大，那么可以考虑将其作为静态成员存在</li>
+<li>如果一些方法具有通用性，那么可以考虑将其作为静态方法存在。</li>
+</ul>
+<h3 id="Object原型上常用的几个方法"><a href="#Object原型上常用的几个方法" class="headerlink" title="Object原型上常用的几个方法"></a>Object原型上常用的几个方法</h3><ol>
+<li><p>hasOwnProperty</p>
+<ul>
+<li>作用: 判断一个对象是否(自己)含有某个属性</li>
+<li>语法: 对象.hasOwnProperty( 要判断的属性名)</li>
+<li><p>返回值: boolean;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;;</div><div class="line"><span class="built_in">console</span>.log(obj.hasOwnProperty(<span class="string">'a'</span>)); <span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(obj.hasOwnProperty(<span class="string">'constructor'</span>)); <span class="comment">//false</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.hasOwnProperty(<span class="string">'hasOwnProperty'</span>)); <span class="comment">//true</span></div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+</li>
+<li><p>propertyIsEnumerable</p>
+<ul>
+<li>作用: 判断一个对象是否(自己)含有某个属性，并且还要判断这个属性是不是可枚举的</li>
+<li>这个方法是一个双重判断，通常这个方法为hasOwnProperty的增强版</li>
+<li>语法: 对象.propertyIsEnumerable( 要判断的属性名)</li>
+<li><p>返回值: boolean;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;;</div><div class="line"><span class="built_in">console</span>.log(obj.propertyIsEnumerable(<span class="string">'a'</span>)); <span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(obj.propertyIsEnumerable(<span class="string">'constructor'</span>)); <span class="comment">//false</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.propertyIsEnumerable(<span class="string">'hasOwnProperty'</span>)); <span class="comment">//false</span></div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+</li>
+<li><p>isPrototypeOf</p>
+<ul>
+<li><p>作用: 判断一个对象是不是另一个对象的原型对象</p>
+</li>
+<li><p>语法: 对象.isPrototypeOf( 对象)</p>
+</li>
+<li><p>返回值: boolean;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">a</span>:<span class="number">1</span>&#125;;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.isPrototypeOf(obj)); <span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.isPrototypeOf(<span class="built_in">Object</span>)); <span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Function</span>.prototype.isPrototypeOf(<span class="built_in">Function</span>)); <span class="comment">//true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Function</span>.prototype.isPrototypeOf(<span class="built_in">Math</span>)); <span class="comment">//false</span></div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+</li>
+<li><p>toString</p>
+<ul>
+<li>作用: 根据方法执行时内部的this指向返回一个类似与这样的字符串:<code>[object this对象的类型名称]</code></li>
+<li>返回值: 一个字符串</li>
+<li><p>通过这个字符串，可以得知内置对象的类型</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//为了让toString方法执行时，内部的this执行Math</span></div><div class="line"><span class="comment">//所以把这个方法添加到了Math自身，然后通过Math调用</span></div><div class="line"><span class="comment">//这样toSting执行时，内部的this就指向Math</span></div><div class="line"><span class="built_in">Math</span>.toStr = <span class="built_in">Object</span>.prototype.toString;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.toStr());</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Math</span>.toString());</div><div class="line"></div><div class="line"><span class="built_in">Date</span>.toStr = <span class="built_in">Object</span>.prototype.toString;</div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Date</span>.toStr());</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="函数默认的原型对象的类型"><a href="#函数默认的原型对象的类型" class="headerlink" title="函数默认的原型对象的类型"></a>函数默认的原型对象的类型</h3><blockquote>
+<p>很多地方认为构造函数默认的显示原型对象的类型，是构造函数的名字。</p>
+<p>即 Person.prototype是Person类型的对象.</p>
+<p>依据，Boolean String Number Arrya Object 这几个对象的prototype，他们的类型就是构造函数的名字</p>
+<p>但是，RegExp Error 对象的类型在chrome浏览器上类型为Object，在ie上为构造函数名字(不同浏览起不同的实现)</p>
+</blockquote>
+<h3 id="函数的几个属性"><a href="#函数的几个属性" class="headerlink" title="函数的几个属性"></a>函数的几个属性</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">fn()</div><div class="line"><span class="built_in">arguments</span>: <span class="literal">null</span></div><div class="line">caller: <span class="literal">null</span></div><div class="line">length: <span class="number">0</span></div><div class="line">name: <span class="string">"fn"</span></div><div class="line">prototype: <span class="built_in">Object</span></div><div class="line">__proto__: ()</div><div class="line">&lt;<span class="function"><span class="keyword">function</span> <span class="title">scope</span>&gt;</span></div></pre></td></tr></table></figure>
+<ol>
+<li><p>arguments 代表实参的伪数组对象，之前是fn的属性，但是被废除了，arguments已经是关键字了，可以直接使用</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,b,c</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</div><div class="line">  <span class="built_in">console</span>.log(fn.arguments); <span class="comment">//这种方式已经被废除了</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<ul>
+<li><p>arguments有一个callee属性，该属性返回被调用的函数。说白一点，callee就会返回函数自己。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">(<span class="built_in">Function</span> () &#123;</div><div class="line">  <span class="built_in">arguments</span>.callee();</div><div class="line">&#125;)()</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+</li>
+<li><p>caller 返回调用该函数的函数</p>
+</li>
+<li><p>length 形参的个数</p>
+</li>
+<li><p>name 函数的名字</p>
+</li>
+</ol>
+<h3 id="in运算符"><a href="#in运算符" class="headerlink" title="in运算符"></a>in运算符</h3><ul>
+<li><p>作用: 判断一个对象能否使用某个属性</p>
+</li>
+<li><p>语法: ‘属性名’ in 对象</p>
+</li>
+<li><p>返回值: Boolean;</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123; <span class="string">'aa'</span>: <span class="number">11</span>&#125;;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'aa'</span> <span class="keyword">in</span> obj);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'bb'</span> <span class="keyword">in</span> obj);</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'hasOwnProperty'</span> <span class="keyword">in</span> obj);</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+<h3 id="delete运算符"><a href="#delete运算符" class="headerlink" title="delete运算符"></a>delete运算符</h3><ul>
+<li><p>作用: 删除对象的属性</p>
+</li>
+<li><p>语法: delete 对象.属性名</p>
+<ul>
+<li>如果对象属性名为数字 delete <code>对象[属性名]</code></li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj = &#123;<span class="attr">aa</span>: <span class="number">10</span>, <span class="attr">bb</span>: <span class="number">230</span>, <span class="number">1</span>:<span class="number">100</span>&#125;;</div><div class="line"><span class="keyword">delete</span> obj.bb;</div><div class="line"><span class="keyword">delete</span> obj[<span class="number">1</span>];</div><div class="line"><span class="built_in">console</span>.dir(obj);</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+<h3 id="Function使用"><a href="#Function使用" class="headerlink" title="Function使用"></a>Function使用</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//通过Function创建一个空函数</span></div><div class="line"><span class="keyword">var</span> fn = <span class="keyword">new</span> <span class="built_in">Function</span>;</div><div class="line"></div><div class="line"><span class="comment">/*创建非空函数</span></div><div class="line">*面可以定义任意数量的形参，最后一个参数代表函数的代码体。(可以动态执行一行代码)</div><div class="line">*意: 这些参数必须是字符串的形式</div><div class="line">*回值: 一个新创建的函数实例</div><div class="line">*/</div><div class="line"><span class="keyword">var</span> fn = <span class="keyword">new</span> <span class="built_in">Function</span>(arg_name1, arg_name2, arg_name3....）</div><div class="line"><span class="keyword">var</span> fn1 = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">'a'</span>, <span class="string">'b'</span>, <span class="string">'console.log(a+b)'</span>);</div></pre></td></tr></table></figure>
+<h3 id="eval用法"><a href="#eval用法" class="headerlink" title="eval用法"></a>eval用法</h3><ul>
+<li>语法: eval(字符串代码);</li>
+<li>作用: 用来解析JSON数据,可以动态执行字符串；</li>
+</ul>
+<blockquote>
+<p>补充</p>
+<p>为了方便操作JSON数据，ES5提供了JSON对象，里面有两个方法</p>
+<ul>
+<li><p>JSON.parse: 用来把JSON数据转换为js对象</p>
+</li>
+<li><p>JSON.stringify: 用来把js对象转换为JSON数据</p>
+<p>在ie8之前，可以用eval或者Function解析JSON数据</p>
+</li>
+</ul>
+</blockquote>
+<h3 id="预解析"><a href="#预解析" class="headerlink" title="预解析"></a>预解析</h3><blockquote>
+<p>在代码整体执行之前，先解析一部分。</p>
+<p>预解析之后，代码才会从上往下依次执行，预解析不会重复执行。</p>
+<p>作用: js中预解析会把声明部分的代码提前执行。</p>
+<p>声明部分:</p>
+<ol>
+<li>变量声明</li>
+<li>函数声明</li>
+</ol>
+</blockquote>
+<h4 id="变量声明"><a href="#变量声明" class="headerlink" title="变量声明"></a>变量声明</h4><blockquote>
+<p>是使用var关键字定义的变量，被称为声明变量。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="comment">//其中var a是声明部分。</span></div><div class="line">&gt; <span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line">&gt; <span class="comment">//这里的语句整体都是声明部分。</span></div><div class="line">&gt; <span class="keyword">var</span> b, c, d;</div><div class="line">&gt; <span class="comment">//其中var e, f, p是声明部分</span></div><div class="line">&gt; <span class="keyword">var</span> e, f = j = <span class="number">2</span>, p;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>变量声明提升的特点是，在声明变量前面，可以使用这个变量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="built_in">console</span>.log(a); <span class="comment">//undefined</span></div><div class="line">&gt; <span class="keyword">var</span> a = <span class="number">10</span>;</div><div class="line">&gt; <span class="built_in">console</span>.log(a); <span class="comment">// 10</span></div><div class="line">&gt; <span class="comment">/*</span></div><div class="line">&gt; *会先执行预解析</div><div class="line">&gt; *var a;</div><div class="line">&gt; *预解析之后执行的代码:</div><div class="line">&gt; *console.log(a);</div><div class="line">&gt; *a = 10;</div><div class="line">&gt; *console.log(a);</div><div class="line">&gt; */</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+</blockquote>
+<h4 id="函数声明"><a href="#函数声明" class="headerlink" title="函数声明"></a>函数声明</h4><blockquote>
+<p>定义函数的方式:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="comment">/*</span></div><div class="line">&gt; *1.函数声明式</div><div class="line">&gt; *	以function关键字开头定义的函数，</div><div class="line">&gt; *	并且定义在全局，或直接嵌套在另一个函数内，</div><div class="line">&gt; *	以这种形式定义的函数就是函数表达式</div><div class="line">&gt; *2.函数表达式(参与运算，存在运算符)</div><div class="line">&gt; * 	不是以function关键字开头定义的函数，</div><div class="line">&gt; *	或者函数潜逃在非函数的代码块中；</div><div class="line">&gt; *	都是函数表达式</div><div class="line">&gt; *3.Function</div><div class="line">&gt; */</div><div class="line">&gt; <span class="comment">//这是函数声明式</span></div><div class="line">&gt; <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">&gt;</div><div class="line">&gt; (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">&gt;   <span class="comment">//里面的是函数声明式</span></div><div class="line">&gt;   <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&gt;     </div><div class="line">&gt;   &#125;</div><div class="line">&gt; &#125;)()</div><div class="line">&gt; <span class="comment">/*----------------------------------------------------------*/</span></div><div class="line">&gt; <span class="comment">//这是函数表达式</span></div><div class="line">&gt; <span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&gt;   </div><div class="line">&gt; &#125;</div><div class="line">&gt; <span class="comment">//自调函数属于函数表达式</span></div><div class="line">&gt; (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">&gt;   </div><div class="line">&gt; &#125;)()</div><div class="line">&gt; <span class="comment">//传入的函数也属于函数表达式</span></div><div class="line">&gt; fn(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;)</div><div class="line">&gt;</div><div class="line">&gt; <span class="comment">//代码块</span></div><div class="line">&gt; &#123;</div><div class="line">&gt;   <span class="comment">//在非函数的代码块中定义的函数是函数表达式</span></div><div class="line">&gt;   <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&gt;     </div><div class="line">&gt;   &#125;</div><div class="line">&gt; &#125;</div><div class="line">&gt;</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>函数声明式定义的函数其他特征:</p>
+<ol>
+<li>会被预解析</li>
+<li>函数必须有名字</li>
+</ol>
+<p>函数表达式定义的函数其他特征:</p>
+<ol>
+<li>不会被预解析</li>
+<li>函数名字可有可无</li>
+<li>函数的名字只能在函数内部使用</li>
+</ol>
+</blockquote>
+<p>函数声明提升的特点: 在函数声明的前面，可以调用这个函数。</p>
+<blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="comment">//函数的声明可以提前调用</span></div><div class="line">&gt; fn();</div><div class="line">&gt; <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&gt;   <span class="built_in">console</span>.log(<span class="number">1</span>);</div><div class="line">&gt; &#125;;</div><div class="line">&gt;</div><div class="line">&gt; (<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">&gt;   <span class="comment">//函数的声明可以提前调用</span></div><div class="line">&gt;   f();</div><div class="line">&gt;   <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">&gt;     <span class="built_in">console</span>.log(<span class="number">111</span>);</div><div class="line">&gt;   &#125;</div><div class="line">&gt; &#125;)();</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+</blockquote>
+<h4 id="预解析时变量重名的处理"><a href="#预解析时变量重名的处理" class="headerlink" title="预解析时变量重名的处理"></a>预解析时变量重名的处理</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//预解析时如果遇到重复的变量声明，那么忽略</span></div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">//undefined</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="keyword">var</span> a = <span class="number">100</span>;</div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">//100</span></div></pre></td></tr></table></figure>
+<h4 id="预解析时对函数重名的处理"><a href="#预解析时对函数重名的处理" class="headerlink" title="预解析时对函数重名的处理"></a>预解析时对函数重名的处理</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//预解析时如果遇到重复的函数声明，保留后面的函数</span></div><div class="line">fn();</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">11</span>);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">22</span>);</div><div class="line">&#125;</div><div class="line">fn();<span class="comment">//打印了两次22</span></div><div class="line"><span class="comment">/*</span></div><div class="line">*预解析：</div><div class="line">*第一个fn声明</div><div class="line">*第二个fn声明，发现重名，保留后面的函数</div><div class="line">*</div><div class="line">*预解析之后:</div><div class="line">* fn();</div><div class="line">* fn();</div><div class="line">*/</div></pre></td></tr></table></figure>
+<h4 id="预解析时对函数与变量重名的处理"><a href="#预解析时对函数与变量重名的处理" class="headerlink" title="预解析时对函数与变量重名的处理"></a>预解析时对函数与变量重名的处理</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//预解析时如果遇到函数与变量重名的情况，保留函数</span></div><div class="line"><span class="built_in">console</span>.log(fn);</div><div class="line"><span class="keyword">var</span> fn = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">11</span>);</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> fn = <span class="number">20</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="number">22</span>);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(fn);</div><div class="line"><span class="comment">/*</span></div><div class="line">*预解析</div><div class="line">*var fn;</div><div class="line">*第一个fn函数声明，发现重名，保留现在打印11的函数；</div><div class="line">*var fn; 发现重名，忽略;</div><div class="line">*第二个fn函数声明，发现重名，保留现在打印22的函数；</div><div class="line">*预解析之后;</div><div class="line">*console.log(fn); //打印22的函数</div><div class="line">*fn = 10;</div><div class="line">*fn = 20;</div><div class="line">*console.log(fn); //打印20</div><div class="line">*/</div></pre></td></tr></table></figure>
+<blockquote>
+<p>预解析时重名处理的特点</p>
+<p>凡是遇到重名的变量声明，那么忽略</p>
+<p>凡是遇到重名的函数声明，当前的函数覆盖之前的。</p>
+</blockquote>
+<h4 id="函数声明定义在代码块中"><a href="#函数声明定义在代码块中" class="headerlink" title="函数声明定义在代码块中"></a>函数声明定义在代码块中</h4><ul>
+<li>[ ] <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">*一个函数声明式的语法，写在非函数的代码块中，理论上这是函数表达式</div><div class="line">*但是对于这种函数，浏览器会预解析它的名字</div><div class="line">*</div><div class="line">*/</div><div class="line"><span class="built_in">console</span>.log(fn);</div><div class="line">&#123;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    </div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(fn);</div><div class="line"><span class="comment">/*</span></div><div class="line">*预解析:</div><div class="line">*var fn;</div><div class="line">*</div><div class="line">*预解析之后:</div><div class="line">*console.log(fn);</div><div class="line">*fn = function fn() &#123;&#125;;</div><div class="line">*console.log(fn);</div><div class="line">*/</div><div class="line"><span class="comment">//补充: 在老版本浏览器中fn函数会被当作函数声明式来预解析</span></div></pre></td></tr></table></figure></li>
+</ul>
+<h4 id="函数在执行时内部也存在预解析"><a href="#函数在执行时内部也存在预解析" class="headerlink" title="函数在执行时内部也存在预解析"></a>函数在执行时内部也存在预解析</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> a= <span class="number">1</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">111</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">fn();</div><div class="line"><span class="comment">/*----------------------*/</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">par</span>) </span>&#123;</div><div class="line">  <span class="comment">//形参一定是在代码整体执行之前复的值。</span></div><div class="line">  <span class="built_in">console</span>.log(par); <span class="comment">//打印10</span></div><div class="line">  <span class="built_in">console</span>.log(a);</div><div class="line">  <span class="built_in">console</span>.log(f);</div><div class="line">  <span class="keyword">var</span> a= <span class="number">1</span>;</div><div class="line">  <span class="keyword">var</span> par = <span class="number">111</span>;</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="number">111</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">fn(<span class="number">10</span>);</div><div class="line"><span class="comment">/*</span></div><div class="line">*函数调用时会先给形参赋值</div><div class="line">*par = 10;</div><div class="line">*</div><div class="line">*预解析:</div><div class="line">*var a;</div><div class="line">*var par;</div><div class="line">*f函数预解析;</div><div class="line">*</div><div class="line">*预解析之后:</div><div class="line">*console.log(par); //10</div><div class="line">*console.log(a); //undefined</div><div class="line">*console.log(f); // f函数体</div><div class="line">*</div><div class="line">*/</div></pre></td></tr></table></figure>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><blockquote>
+<p>就是变量的有效范围。</p>
+</blockquote>
+<h3 id="如何检测一个变量的作用"><a href="#如何检测一个变量的作用" class="headerlink" title="如何检测一个变量的作用"></a>如何检测一个变量的作用</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//在指定的区域内是同这个变量，如果不报错，说明这个变量的作用域包含此区域</span></div><div class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">//打印1</span></div><div class="line">(<span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> b = <span class="number">10</span>;</div><div class="line"><span class="built_in">console</span>.log(a); <span class="comment">//打印1</span></div><div class="line">&#125;)</div><div class="line">consol.log(b); <span class="comment">//报错defind</span></div></pre></td></tr></table></figure>
+<h3 id="全局变量"><a href="#全局变量" class="headerlink" title="全局变量"></a>全局变量</h3><blockquote>
+<p>在任何地方都可以使用的变量</p>
+<p>在函数外定义的都是全局变量</p>
+</blockquote>
+<h3 id="局部变量"><a href="#局部变量" class="headerlink" title="局部变量"></a>局部变量</h3><blockquote>
+<p>只有指定地方可以使用的变量称之为局部变量</p>
+<p>在函数内声明的变量都是局部变量</p>
+</blockquote>
+<h3 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h3><p>全局变量和局部变量就是通过作用域的大小来对变量进行的种类划分</p>
+<h3 id="函数作用域"><a href="#函数作用域" class="headerlink" title="函数作用域"></a>函数作用域</h3><blockquote>
+<p>只有函数能够划分变量的作用域，这种作用域的规则就叫做函数作用域。</p>
+<p>补充:</p>
+<ul>
+<li><p>块级作用域: 凡是代码块就可以划分变量的作用域，这种作用域的规则叫做块级作用域 。(在ES6之前js不支持块级作用域)。</p>
+</li>
+<li><p>ES6对块级作用域进行了支持，新增了两种定义变量的方式(没有预解析):</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">&gt;   <span class="comment">//方式1</span></div><div class="line">&gt;   &#123;</div><div class="line">&gt;     <span class="keyword">let</span> arr =[];</div><div class="line">&gt;     <span class="built_in">console</span>.log(arr); <span class="comment">//打印[];</span></div><div class="line">&gt;   &#125;</div><div class="line">&gt;   <span class="built_in">console</span>.log(arr); <span class="comment">//报错</span></div><div class="line">&gt;   <span class="comment">//方式2</span></div><div class="line">&gt;   &#123;</div><div class="line">&gt;     <span class="keyword">const</span> obj =[];</div><div class="line">&gt;     <span class="built_in">console</span>.log(obj); <span class="comment">//打印[];</span></div><div class="line">&gt;   &#125;</div><div class="line">&gt;   <span class="built_in">console</span>.log(obj); <span class="comment">//报错</span></div><div class="line">&gt;   <span class="comment">/*</span></div><div class="line">&gt;   *区别:</div><div class="line">&gt;   *const可以定义常量</div><div class="line">&gt;   */</div><div class="line">&gt;</div><div class="line">&gt;   <span class="comment">/*</span></div><div class="line">&gt;   *常量就是永远不会变化的量</div><div class="line">&gt;   */</div><div class="line">&gt;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+</blockquote>
+<p>&gt;</p>
+<blockquote>
+<p>  ​</p>
+</blockquote>
+<h3 id="词法作用域"><a href="#词法作用域" class="headerlink" title="词法作用域"></a>词法作用域</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*</span></div><div class="line">*词法作用域(静态作用域)</div><div class="line">*如果在函数内访问一个变量，优先找局部变量和形参。</div><div class="line">*如果没有找到，去定义该函数的环境中查找。</div><div class="line">*直到全局为止</div><div class="line">*/</div><div class="line"><span class="keyword">var</span> a = <span class="number">200</span>;</div><div class="line"><span class="keyword">var</span> b = <span class="number">300</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">1</span>;</div><div class="line">  <span class="built_in">console</span>.log(a);</div><div class="line">  <span class="built_in">console</span>.log(b);</div><div class="line">&#125;</div><div class="line">(<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> a = <span class="number">100</span>;</div><div class="line">  <span class="keyword">var</span> b = <span class="number">400</span>;</div><div class="line">  fn();</div><div class="line">&#125;)(); <span class="comment">//打印 1 300;</span></div></pre></td></tr></table></figure>
+<h3 id="补充-1"><a href="#补充-1" class="headerlink" title="补充"></a>补充</h3><p>块级作用域 函数作用域 词法作用域之间的联系:</p>
+<ul>
+<li>块级作用域和函数作用域描述的是，什么东西可以划分变量的作用域，同时块级作用域包含函数作用域</li>
+<li>词法作用域描述的是变量的查找规则</li>
+<li>关系:<ul>
+<li>块级作用域包含函数作用域</li>
+<li>词法作用域与块级作用域&amp;函数作用域 没有任何关系<ul>
+<li>他们从两个角度描述的作用域规则，ES6之前采用的是函数作用域+词法作用域</li>
+<li>ES6采用的是块级作用域 + 词法作用域</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="动态作用域"><a href="#动态作用域" class="headerlink" title="动态作用域"></a>动态作用域</h4><blockquote>
+<p>如果在函数内访问一个变量，优先找局部变量和形参</p>
+<p>如果没有找到，去调用该函数的环境中查找</p>
+<p>直到全局为止。</p>
+</blockquote>
+<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/hexo/">hexo</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2015/01/14/面向对象参考/面向对象第四天/" data-title="面向对象第四天 | 1000 words a Day" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/01/14/面向对象/day05/" title="面向对象第五天">
+  <strong>上一篇：</strong><br/>
+  <span>
+  面向对象第五天</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/01/14/面向对象/2016.10.12面向对象第七天 补充/"  title="面向对象 第七天补充">
+ <strong>下一篇：</strong><br/> 
+ <span>面向对象 第七天补充
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#面向对象的三大特征"><span class="toc-number">1.</span> <span class="toc-text">面向对象的三大特征</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#for-in"><span class="toc-number">2.</span> <span class="toc-text">for in</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#静态成员和实例成员"><span class="toc-number">3.</span> <span class="toc-text">静态成员和实例成员</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#静态成员-类成员"><span class="toc-number">3.1.</span> <span class="toc-text">静态成员(类成员)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#实例成员"><span class="toc-number">3.2.</span> <span class="toc-text">实例成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#JQuery分析"><span class="toc-number">3.3.</span> <span class="toc-text">JQuery分析</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#什么情况下会用到静态成员"><span class="toc-number">3.4.</span> <span class="toc-text">什么情况下会用到静态成员</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Object原型上常用的几个方法"><span class="toc-number">3.5.</span> <span class="toc-text">Object原型上常用的几个方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数默认的原型对象的类型"><span class="toc-number">3.6.</span> <span class="toc-text">函数默认的原型对象的类型</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数的几个属性"><span class="toc-number">3.7.</span> <span class="toc-text">函数的几个属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#in运算符"><span class="toc-number">3.8.</span> <span class="toc-text">in运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#delete运算符"><span class="toc-number">3.9.</span> <span class="toc-text">delete运算符</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Function使用"><span class="toc-number">3.10.</span> <span class="toc-text">Function使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#eval用法"><span class="toc-number">3.11.</span> <span class="toc-text">eval用法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#预解析"><span class="toc-number">3.12.</span> <span class="toc-text">预解析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#变量声明"><span class="toc-number">3.12.1.</span> <span class="toc-text">变量声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数声明"><span class="toc-number">3.12.2.</span> <span class="toc-text">函数声明</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#预解析时变量重名的处理"><span class="toc-number">3.12.3.</span> <span class="toc-text">预解析时变量重名的处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#预解析时对函数重名的处理"><span class="toc-number">3.12.4.</span> <span class="toc-text">预解析时对函数重名的处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#预解析时对函数与变量重名的处理"><span class="toc-number">3.12.5.</span> <span class="toc-text">预解析时对函数与变量重名的处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数声明定义在代码块中"><span class="toc-number">3.12.6.</span> <span class="toc-text">函数声明定义在代码块中</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数在执行时内部也存在预解析"><span class="toc-number">3.12.7.</span> <span class="toc-text">函数在执行时内部也存在预解析</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#作用域"><span class="toc-number">4.</span> <span class="toc-text">作用域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#如何检测一个变量的作用"><span class="toc-number">4.1.</span> <span class="toc-text">如何检测一个变量的作用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#全局变量"><span class="toc-number">4.2.</span> <span class="toc-text">全局变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#局部变量"><span class="toc-number">4.3.</span> <span class="toc-text">局部变量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#补充"><span class="toc-number">4.4.</span> <span class="toc-text">补充</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#函数作用域"><span class="toc-number">4.5.</span> <span class="toc-text">函数作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#词法作用域"><span class="toc-number">4.6.</span> <span class="toc-text">词法作用域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#补充-1"><span class="toc-number">4.7.</span> <span class="toc-text">补充</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#动态作用域"><span class="toc-number">4.7.1.</span> <span class="toc-text">动态作用域</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#作用域链"><span class="toc-number">4.8.</span> <span class="toc-text">作用域链</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/canvas/" title="canvas">canvas<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/面向对象/" title="面向对象">面向对象<sup>17</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>18</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Coldfont">Coldfont</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
