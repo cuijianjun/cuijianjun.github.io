@@ -1076,6 +1076,406 @@ console.log(obj);
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
+      <a href="/2015/01/14/面向对象/day05/" title="面向对象第五天" itemprop="url">面向对象第五天</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Coldfont" target="_blank" itemprop="author">Coldfont</a>
+		
+  <p class="article-time">
+    <time datetime="2015-01-14T12:37:51.000Z" itemprop="datePublished"> 发表于 2015-01-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h4 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h4><blockquote>
+<ul>
+<li>变量所有的有效区块(运行环境)，统称作用域链</li>
+<li>环境：一个东西所依赖东西，就可以认为是他的环境</li>
+<li>执行环境：代码执行时所依赖的环境，函数被调用一次，就会产生一个执行环境</li>
+</ul>
+</blockquote>
+<p>####广义闭包</p>
+<ul>
+<li>可以访问非自身变量的函数，从这个角度来讲，所有的函数都是闭包(1)</li>
+<li>使用了非自身变量的函数，就是闭包(2)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var globalA = 10;</div><div class="line">        // 这个函数，可以使用非自身的变量，那么这是一个闭包。</div><div class="line">        function fn() &#123;</div><div class="line">            console.log(globalA);</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<p>####狭义闭包</p>
+<ul>
+<li>可以访问非自身局部变量的函数，从这种角度来讲，函数内的函数才是闭包(1)</li>
+<li>使用了非自身局部变量的函数(2)</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var globalA = 10;</div><div class="line">        // 这个函数，只能使用全局变量和自身的局部变量，所以不是闭包。</div><div class="line">        function fn() &#123;</div><div class="line">            console.log(globalA);</div><div class="line">        &#125;</div><div class="line">        /*------------------------------------------------------*/</div><div class="line">        (function () &#123;</div><div class="line">            var val = 10;</div><div class="line">            // 这个函数可以使用自调函数中的局部变量，所以是闭包</div><div class="line">            function f() &#123;</div><div class="line">                console.log(val);</div><div class="line">            &#125;</div><div class="line">        &#125;());</div></pre></td></tr></table></figure>
+<p>####闭包的特点</p>
+<ul>
+<li>可以在任何地方操作一个局部变量</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function fn() &#123;</div><div class="line">           var a = 1;</div><div class="line">           return function () &#123;</div><div class="line">               console.log(a++);</div><div class="line">           &#125;;</div><div class="line">       &#125;</div><div class="line">       var f = fn();</div><div class="line">       f();</div><div class="line">       f();</div></pre></td></tr></table></figure>
+<p>####生命周期</p>
+<blockquote>
+<p>一个生物从出生开始到死亡结束，中间存活的过程叫生命周期</p>
+</blockquote>
+<p>####变量的生命周期</p>
+<blockquote>
+<p>一个变量从定义开始，到释放结束，中间存活的过程就叫变量的生命周期</p>
+</blockquote>
+<p>####全局变量的生命周期</p>
+<blockquote>
+<p>从定义开始，到页面卸载结束，就是全局变量的生命周期</p>
+</blockquote>
+<p>####局部变量的生命周期</p>
+<blockquote>
+<p>一般情况下，从变量定义开始，到函数执行完毕结束，就是局部变量的生命周期</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function fn() &#123;</div><div class="line">            // 这个变量，从fn调用时定义，到函数执行完毕结束。</div><div class="line">            var val = 10;</div><div class="line">        &#125;</div><div class="line">        fn();</div></pre></td></tr></table></figure>
+<ul>
+<li>二般情况可以通过闭包实现</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">function fn() &#123;</div><div class="line">            var a = 1;</div><div class="line">            // 当fn执行完毕后，因为匿名函数需要使用局部变量a,</div><div class="line">            // 所以造成a变量没有释放。</div><div class="line">            // 总结：闭包可以延长局部变量的生命周期</div><div class="line">            return function () &#123;</div><div class="line">                console.log(a);</div><div class="line">            &#125;;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        var f = fn();</div><div class="line">        f();</div><div class="line">        f();</div><div class="line">```   </div><div class="line"> </div><div class="line">&gt;  因为f变量一直存储着一个闭包函数，js解析引擎无法得知将来是否还有调用f函数，所以f函数不会被释</div><div class="line">放，那么对应的a局部变量也不会被释放，这样就会造成内存浪费，如果将来f函数不会再使用了，最好手动</div><div class="line">给f 赋值为 null。</div></pre></td></tr></table></figure>
+<p>// 如果想要阻止a的释放，必须要借助闭包<br>        function fn() {<br>            var a = 1;<br>            return function () {<br>                return a;<br>            };<br>        }</p>
+<pre><code>var f = fn();
+var f2 = fn();
+
+// f调用和f2调用后，得到的a值，是来源与同一个a的。
+console.log(f());
+console.log(f2());
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">####闭包的应用场景</div></pre></td></tr></table></figure>
+<p> /*</p>
+<pre><code>* 1 操作私有属性(目的，为了防止其他地方对该属性进行随意修改的隐患)
+* */
+
+var total = 0;
+total+=10;
+total++;
+console.log(total);
+
+/*-----------------------------------------------*/
+function getCounter() {
+    var total = 0;
+    return function () {
+        console.log(total++);
+    }
+}
+var counter = getCounter();
+counter();
+counter();
+* 防止变量被全局污染
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">####编辑一段可以缓存数据的代码</div></pre></td></tr></table></figure>
+<p>var cache = {};</p>
+<pre><code>// 给缓存中添加数据
+function setCache(key, val) {
+    cache[key] = val;
+}
+
+// 获取缓存中指定的数据
+function getCache(key) {
+    return cache[key];
+}
+
+/*---------------------------------------------------------*/
+
+function getCacheObj() {
+    var cache = {};
+
+    // 给缓存中添加数据
+    function setCache(key, val) {
+        cache[key] = val;
+    }
+
+    // 获取缓存中指定的数据
+    function getCache(key) {
+        return cache[key];
+    }
+
+    return {
+        setCache: setCache,
+        getCache: getCache,
+    }
+}
+
+var cacheObj = getCacheObj();
+cacheObj.setCache(&apos;val&apos;, 888);
+console.log(cacheObj.getCache(&apos;val&apos;));
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">####return基本数据类型和对象的区别</div><div class="line"></div><div class="line">1. 基本数据类型</div></pre></td></tr></table></figure>
+<p>function fn() {<br>            var a = 1;<br>            return a;<br>        }</p>
+<pre><code>/*
+ * fn执行结果是返回一个数值，
+ * 那么a和a2分别存储返回数值的一个copy版本。
+ * */
+var a = fn();
+var a2 = fn();
+</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">2. 对象</div></pre></td></tr></table></figure>
+<p>function fn() {<br>            var obj = {};<br>            return obj;<br>        }</p>
+<pre><code>/*
+* fn执行结果是返回一个对象的地址，
+* 那么o和o2存储是同一个对象的地址。
+* */
+var o = fn();
+var o2 = fn();
+</code></pre><p>```</p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/hexo/">hexo</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/01/14/面向对象/2016.10.12面向对象第七天 补充/" title="面向对象 第七天补充" itemprop="url">面向对象 第七天补充</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Coldfont" target="_blank" itemprop="author">Coldfont</a>
+		
+  <p class="article-time">
+    <time datetime="2015-01-14T12:37:51.000Z" itemprop="datePublished"> 发表于 2015-01-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="一、需求（例题）"><a href="#一、需求（例题）" class="headerlink" title="一、需求（例题）"></a>一、需求（例题）</h2><ul>
+<li>如果传入一个基本数据类型，则返回则数据的类型字符串描述，要求全部小写; [toc]</li>
+<li>如果传入一个对象类型，则返回则对象的类型字符串描述，要求首字母大写;</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function getType(data)&#123;</div><div class="line">  //如果data不等于自己，那data就是NaN</div><div class="line">  //如果data全等于null，那data就是null</div><div class="line">  //使用typeof可以判断string、boolean、number、undefined</div><div class="line">  //最后剩下的对象，统一使用(&#123;&#125;).toString方法获取</div><div class="line">  //NaN</div><div class="line">  if(data!==data)&#123;</div><div class="line">        return &quot;NaN&quot;;</div><div class="line">  &#125;else if(data===null)&#123;</div><div class="line">        return &quot;null&quot;;</div><div class="line">  &#125;else if(typeof data !==&quot;object&quot; &amp;&amp; typeof data !==&quot;function&quot;)&#123;</div><div class="line">         return typeof data;</div><div class="line">  &#125;else&#123;</div><div class="line">        return (&#123;&#125;).toString.call(data).slice(8,-1);  外面的括号为什么存在？</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>##二、Function.prototype</p>
+<blockquote>
+<p>Function.prototype自身是一个函数，并且是唯一一个没有prototype属性的函数。</p>
+<p>Function.prototype上定义了一下属性及方法</p>
+</blockquote>
+<ul>
+<li>apply：方法，可以改变函数执行时内部的this的指向</li>
+<li>arguement：被废弃了</li>
+<li>bind：方法 返回一个函数的copy版本，并且可以指定该函数执行时内部this的指向</li>
+<li>call: 方法，可以改变函数的执行时内部this的指向</li>
+</ul>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/hexo/">hexo</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/01/14/面向对象/day03/" title="面向对象第三天" itemprop="url">面向对象第三天</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Coldfont" target="_blank" itemprop="author">Coldfont</a>
+		
+  <p class="article-time">
+    <time datetime="2015-01-14T12:37:51.000Z" itemprop="datePublished"> 发表于 2015-01-14</time>
+    
+  </p>
+</header>
+    <div class="article-content">
+        
+        <h2 id="面向对象第三天"><a href="#面向对象第三天" class="headerlink" title="面向对象第三天"></a>面向对象第三天</h2><h4 id="构造函数的默认的prototype的继承结构"><a href="#构造函数的默认的prototype的继承结构" class="headerlink" title="构造函数的默认的prototype的继承结构"></a>构造函数的默认的prototype的继承结构</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function Person()&#123;&#125;</div><div class="line">var xioahong=new Person()</div><div class="line">    原型链</div><div class="line">//xiaohong==&gt;Person.prototype==&gt;Object.prototype==&gt;null</div></pre></td></tr></table></figure>
+<ul>
+<li><p>{}是new Object的简写形式</p>
+<blockquote>
+<p> obj==&gt;Object.prototype==&gt;null</p>
+</blockquote>
+</li>
+<li><p>[]是arr的字面量</p>
+<blockquote>
+<p>arr ==&gt; Array.prototype ==&gt; Object.prototype ==&gt; null</p>
+</blockquote>
+</li>
+<li><p>Math的继承结构</p>
+<blockquote>
+<p>Math ==&gt; Object.prototype ==&gt; null</p>
+</blockquote>
+</li>
+<li><p>strObj的继承结构</p>
+<blockquote>
+<p>strObj ==&gt; String.prototype ==&gt; Object.prototype ==&gt; null</p>
+</blockquote>
+</li>
+</ul>
+<p>#####函数的显示原型都继承 Object.prototype</p>
+<blockquote>
+<p>原型链的概念：</p>
+</blockquote>
+<p>一个对象继承的所有对象，被形象的称为对象的原型链<br>注释：原型链是一个描述对象继承结构，相对比较形象的词汇；</p>
+<p>####继承的规律：</p>
+<ol>
+<li>谁的实例，这个实例就继承谁的prototype</li>
+<li>所有对象继承的终点是Object.prototype</li>
+<li>所有函数默认的显示原型 都继承 Object.prototype</li>
+<li>所有的函数，都被看做是Function的实例，；所以都继承Function.prototype</li>
+<li>所有的数组，都被看做是Array的实例，所以都继承Array.prototype</li>
+<li>所有的正则，都被看做RexExp的实例，所以都继承Regexp.prototype.</li>
+</ol>
+<p>####对象的的类型</p>
+<ul>
+<li>在js中，函数比较特殊，他们都是Function类型的对象，但是可以配生出属于自己类型的对象</li>
+<li>Date自身是Function类型，但是通过new Date创建出来的所有实例是Date类型</li>
+<li>ECMAscript内置的—-函数类型的对象:<ul>
+<li>String Number Boolean RegExp Function  Object Array Error Date </li>
+</ul>
+</li>
+<li>上述九大构造函数的原型链结构:<ul>
+<li>9大构造函数==&gt;Function.prototype==&gt;Object.prototype==&gt;null</li>
+</ul>
+</li>
+<li>ECMAscript内置的——–非函数类型的对象；<ul>
+<li>Math</li>
+<li>Math原型链：Math==&gt;Object.prototype==&gt;null</li>
+</ul>
+</li>
+</ul>
+<p>####instanceof运算符</p>
+<blockquote>
+<p> 判断一个对象是不是另一个构造函数的实例。运算规则:判断左边对象的原型链结构中是否存在右边构造函数的显示原型<br>返回值：boolean</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function Person() &#123;&#125;</div><div class="line">        var xiaofang = new Person();</div><div class="line">        // xiaofang ==&gt; Person.prototype ==&gt; Object.prototype ==&gt; null</div><div class="line">        console.log( xiaofang instanceof Person );  // true</div><div class="line">        console.log( xiaofang instanceof Object );  // true</div><div class="line">         // 把Person.prototype进行覆写，覆写后xiaofang的原型链结构中，就不存在当前Person.prototype所指向的对象了。</div><div class="line">                Person.prototype = &#123;</div><div class="line">                    it: &apos;it&apos;</div><div class="line">                &#125;;</div><div class="line">                console.log( xiaofang instanceof Person );  // false</div><div class="line">                console.log( xiaofang.it );  // undefined</div><div class="line">                var xiaomei = new Person();</div><div class="line">                        console.log( xiaomei instanceof Person );  // true</div><div class="line">                        console.log( xiaomei.it );  // it</div></pre></td></tr></table></figure>
+<ul>
+<li>关于instanceof的例题</li>
+</ul>
+<blockquote>
+<p>// Function ==&gt; // Function.prototype ==&gt; Object.prototype ==&gt; null<br>          // Object ==&gt; // Function.prototype ==&gt; Object.prototype ==&gt; null<br>          console.log(Function instanceof Object);  // true<br>          console.log(Function instanceof Function);  // true<br>          console.log(Object instanceof Object);  // true<br>          console.log(Object instanceof Function);  // true</p>
+<p>####关于画图练习原型链</p>
+<ol>
+<li>关于原型覆写后的原型链</li>
+</ol>
+</blockquote>
+<pre><code>function Person(){}
+         function Student(){}
+         Student.prototype = new Person();
+         var jiajia = new Person();
+         var meimei = new Student();
+         // jijia 和 meimei 的原型链结构：
+         // jiajia ==&gt; Person.prototype ==&gt; Object.prototype ==&gt; null
+         // meimei ==&gt; Student.prototype（被覆写过的） ==&gt; Person.prototype ==&gt; Object.prototype ==&gt; null
+</code></pre><hr>
+<h2 id="gt-给Object-prototype扩展的属性与方法，所有的对象都可以使用"><a href="#gt-给Object-prototype扩展的属性与方法，所有的对象都可以使用" class="headerlink" title="&gt;  给Object.prototype扩展的属性与方法，所有的对象都可以使用"></a>&gt;  给Object.prototype扩展的属性与方法，所有的对象都可以使用</h2><p>####原型链结构</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="08精简版的原型链结构.png" alt="原型链结构"></h2><p><img src="04完整的原型链结构.png" alt="原型链结构"></p>
+
+        
+        
+        <p class="article-more-link">
+          
+       </p>
+    </div>
+    <footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/hexo/">hexo</a>
+  </div>
+
+</div>
+
+
+
+
+<div class="comments-count">
+	
+</div>
+
+</footer>
+
+
+    </article>
+
+
+
+
+
+
+   
+    
+    <article class="post-expand post" itemprop="articleBody"> 
+        <header class="article-info clearfix">
+  <h1 itemprop="name">
+    
       <a href="/2015/01/14/面向对象/day01面向对象的基本概念及注意事项/" title="面向对象 第一天" itemprop="url">面向对象 第一天</a>
   </h1>
   <p class="article-author">By
@@ -1296,7 +1696,7 @@ console.log(obj);
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/01/14/面向对象/day03/" title="面向对象第三天" itemprop="url">面向对象第三天</a>
+      <a href="/2015/01/14/面向对象/day 06/" title="面向对象第六天" itemprop="url">面向对象第六天</a>
   </h1>
   <p class="article-author">By
        
@@ -1309,358 +1709,10 @@ console.log(obj);
 </header>
     <div class="article-content">
         
-        <h2 id="面向对象第三天"><a href="#面向对象第三天" class="headerlink" title="面向对象第三天"></a>面向对象第三天</h2><h4 id="构造函数的默认的prototype的继承结构"><a href="#构造函数的默认的prototype的继承结构" class="headerlink" title="构造函数的默认的prototype的继承结构"></a>构造函数的默认的prototype的继承结构</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">function Person()&#123;&#125;</div><div class="line">var xioahong=new Person()</div><div class="line">    原型链</div><div class="line">//xiaohong==&gt;Person.prototype==&gt;Object.prototype==&gt;null</div></pre></td></tr></table></figure>
-<ul>
-<li><p>{}是new Object的简写形式</p>
-<blockquote>
-<p> obj==&gt;Object.prototype==&gt;null</p>
+        <h4 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout"></a>setTimeout</h4><blockquote>
+<p>异步执行</p>
 </blockquote>
-</li>
-<li><p>[]是arr的字面量</p>
-<blockquote>
-<p>arr ==&gt; Array.prototype ==&gt; Object.prototype ==&gt; null</p>
-</blockquote>
-</li>
-<li><p>Math的继承结构</p>
-<blockquote>
-<p>Math ==&gt; Object.prototype ==&gt; null</p>
-</blockquote>
-</li>
-<li><p>strObj的继承结构</p>
-<blockquote>
-<p>strObj ==&gt; String.prototype ==&gt; Object.prototype ==&gt; null</p>
-</blockquote>
-</li>
-</ul>
-<p>#####函数的显示原型都继承 Object.prototype</p>
-<blockquote>
-<p>原型链的概念：</p>
-</blockquote>
-<p>一个对象继承的所有对象，被形象的称为对象的原型链<br>注释：原型链是一个描述对象继承结构，相对比较形象的词汇；</p>
-<p>####继承的规律：</p>
-<ol>
-<li>谁的实例，这个实例就继承谁的prototype</li>
-<li>所有对象继承的终点是Object.prototype</li>
-<li>所有函数默认的显示原型 都继承 Object.prototype</li>
-<li>所有的函数，都被看做是Function的实例，；所以都继承Function.prototype</li>
-<li>所有的数组，都被看做是Array的实例，所以都继承Array.prototype</li>
-<li>所有的正则，都被看做RexExp的实例，所以都继承Regexp.prototype.</li>
-</ol>
-<p>####对象的的类型</p>
-<ul>
-<li>在js中，函数比较特殊，他们都是Function类型的对象，但是可以配生出属于自己类型的对象</li>
-<li>Date自身是Function类型，但是通过new Date创建出来的所有实例是Date类型</li>
-<li>ECMAscript内置的—-函数类型的对象:<ul>
-<li>String Number Boolean RegExp Function  Object Array Error Date </li>
-</ul>
-</li>
-<li>上述九大构造函数的原型链结构:<ul>
-<li>9大构造函数==&gt;Function.prototype==&gt;Object.prototype==&gt;null</li>
-</ul>
-</li>
-<li>ECMAscript内置的——–非函数类型的对象；<ul>
-<li>Math</li>
-<li>Math原型链：Math==&gt;Object.prototype==&gt;null</li>
-</ul>
-</li>
-</ul>
-<p>####instanceof运算符</p>
-<blockquote>
-<p> 判断一个对象是不是另一个构造函数的实例。运算规则:判断左边对象的原型链结构中是否存在右边构造函数的显示原型<br>返回值：boolean</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">function Person() &#123;&#125;</div><div class="line">        var xiaofang = new Person();</div><div class="line">        // xiaofang ==&gt; Person.prototype ==&gt; Object.prototype ==&gt; null</div><div class="line">        console.log( xiaofang instanceof Person );  // true</div><div class="line">        console.log( xiaofang instanceof Object );  // true</div><div class="line">         // 把Person.prototype进行覆写，覆写后xiaofang的原型链结构中，就不存在当前Person.prototype所指向的对象了。</div><div class="line">                Person.prototype = &#123;</div><div class="line">                    it: &apos;it&apos;</div><div class="line">                &#125;;</div><div class="line">                console.log( xiaofang instanceof Person );  // false</div><div class="line">                console.log( xiaofang.it );  // undefined</div><div class="line">                var xiaomei = new Person();</div><div class="line">                        console.log( xiaomei instanceof Person );  // true</div><div class="line">                        console.log( xiaomei.it );  // it</div></pre></td></tr></table></figure>
-<ul>
-<li>关于instanceof的例题</li>
-</ul>
-<blockquote>
-<p>// Function ==&gt; // Function.prototype ==&gt; Object.prototype ==&gt; null<br>          // Object ==&gt; // Function.prototype ==&gt; Object.prototype ==&gt; null<br>          console.log(Function instanceof Object);  // true<br>          console.log(Function instanceof Function);  // true<br>          console.log(Object instanceof Object);  // true<br>          console.log(Object instanceof Function);  // true</p>
-<p>####关于画图练习原型链</p>
-<ol>
-<li>关于原型覆写后的原型链</li>
-</ol>
-</blockquote>
-<pre><code>function Person(){}
-         function Student(){}
-         Student.prototype = new Person();
-         var jiajia = new Person();
-         var meimei = new Student();
-         // jijia 和 meimei 的原型链结构：
-         // jiajia ==&gt; Person.prototype ==&gt; Object.prototype ==&gt; null
-         // meimei ==&gt; Student.prototype（被覆写过的） ==&gt; Person.prototype ==&gt; Object.prototype ==&gt; null
-</code></pre><hr>
-<h2 id="gt-给Object-prototype扩展的属性与方法，所有的对象都可以使用"><a href="#gt-给Object-prototype扩展的属性与方法，所有的对象都可以使用" class="headerlink" title="&gt;  给Object.prototype扩展的属性与方法，所有的对象都可以使用"></a>&gt;  给Object.prototype扩展的属性与方法，所有的对象都可以使用</h2><p>####原型链结构</p>
-<h2 id=""><a href="#" class="headerlink" title=""></a><img src="08精简版的原型链结构.png" alt="原型链结构"></h2><p><img src="04完整的原型链结构.png" alt="原型链结构"></p>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/hexo/">hexo</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/01/14/面向对象/call apply/" title="面向对象  call、apply、bind" itemprop="url">面向对象  call、apply、bind</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Coldfont" target="_blank" itemprop="author">Coldfont</a>
-		
-  <p class="article-time">
-    <time datetime="2015-01-14T12:37:51.000Z" itemprop="datePublished"> 发表于 2015-01-14</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <blockquote>
-<p>这三个方法都是来自于Function.prototype上，所以所有的函数都可以使用。<br>他们有一个共同点，就是可以指定函数执行时内部this的指向。<br>call和apply的区别在于参数的方式。<br>bind和前两个方法的区别在于，bind不会马上执行函数，而是返回一个函数，供以后调用。</p>
-</blockquote>
-<h2 id="call"><a href="#call" class="headerlink" title="call"></a>call</h2><blockquote>
-<p>语法：函数名.call( this指向，实参1, 实参2…. )</p>
-</blockquote>
-<h2 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h2><blockquote>
-<p>语法1：函数名.apply( this指向，[实参1, 实参2….] )<br>语法2：函数名.apply( this指向，{0: 实参1, 1: 实参2, length: 2} )</p>
-</blockquote>
-<h2 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h2><blockquote>
-<p>语法：var fn = 函数名.bind( this指向，要绑定的实参1, 要绑定的实参2…. );</p>
-</blockquote>
-<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><blockquote>
-<p>严格模式分为全局模式和局部模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 全局模式，就是在全局代码的最前面写上下面这句话</div><div class="line">&apos;use strict&apos;;</div></pre></td></tr></table></figure></p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 局部模式，就是在函数代码的最前面写上下面这句话</div><div class="line">function fn() &#123;</div><div class="line">    &apos;use strict&apos;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<ul>
-<li>必须通过var定义变量</li>
-<li>对象中不能存在重复的属性名</li>
-<li>函数中不能存在重复的形参名</li>
-<li>eval会产生单独的作用域，避免了全局变量的产生。</li>
-<li>无法在非函数的代码块中声明函数了</li>
-<li>禁止使用with语句</li>
-<li>禁止使用函数的caller属性</li>
-<li>禁止使用arguments的callee属性</li>
-</ul>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/hexo/">hexo</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/01/14/面向对象/day05/" title="面向对象第五天" itemprop="url">面向对象第五天</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Coldfont" target="_blank" itemprop="author">Coldfont</a>
-		
-  <p class="article-time">
-    <time datetime="2015-01-14T12:37:51.000Z" itemprop="datePublished"> 发表于 2015-01-14</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h4 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h4><blockquote>
-<ul>
-<li>变量所有的有效区块(运行环境)，统称作用域链</li>
-<li>环境：一个东西所依赖东西，就可以认为是他的环境</li>
-<li>执行环境：代码执行时所依赖的环境，函数被调用一次，就会产生一个执行环境</li>
-</ul>
-</blockquote>
-<p>####广义闭包</p>
-<ul>
-<li>可以访问非自身变量的函数，从这个角度来讲，所有的函数都是闭包(1)</li>
-<li>使用了非自身变量的函数，就是闭包(2)</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">var globalA = 10;</div><div class="line">        // 这个函数，可以使用非自身的变量，那么这是一个闭包。</div><div class="line">        function fn() &#123;</div><div class="line">            console.log(globalA);</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
-<p>####狭义闭包</p>
-<ul>
-<li>可以访问非自身局部变量的函数，从这种角度来讲，函数内的函数才是闭包(1)</li>
-<li>使用了非自身局部变量的函数(2)</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">var globalA = 10;</div><div class="line">        // 这个函数，只能使用全局变量和自身的局部变量，所以不是闭包。</div><div class="line">        function fn() &#123;</div><div class="line">            console.log(globalA);</div><div class="line">        &#125;</div><div class="line">        /*------------------------------------------------------*/</div><div class="line">        (function () &#123;</div><div class="line">            var val = 10;</div><div class="line">            // 这个函数可以使用自调函数中的局部变量，所以是闭包</div><div class="line">            function f() &#123;</div><div class="line">                console.log(val);</div><div class="line">            &#125;</div><div class="line">        &#125;());</div></pre></td></tr></table></figure>
-<p>####闭包的特点</p>
-<ul>
-<li>可以在任何地方操作一个局部变量</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function fn() &#123;</div><div class="line">           var a = 1;</div><div class="line">           return function () &#123;</div><div class="line">               console.log(a++);</div><div class="line">           &#125;;</div><div class="line">       &#125;</div><div class="line">       var f = fn();</div><div class="line">       f();</div><div class="line">       f();</div></pre></td></tr></table></figure>
-<p>####生命周期</p>
-<blockquote>
-<p>一个生物从出生开始到死亡结束，中间存活的过程叫生命周期</p>
-</blockquote>
-<p>####变量的生命周期</p>
-<blockquote>
-<p>一个变量从定义开始，到释放结束，中间存活的过程就叫变量的生命周期</p>
-</blockquote>
-<p>####全局变量的生命周期</p>
-<blockquote>
-<p>从定义开始，到页面卸载结束，就是全局变量的生命周期</p>
-</blockquote>
-<p>####局部变量的生命周期</p>
-<blockquote>
-<p>一般情况下，从变量定义开始，到函数执行完毕结束，就是局部变量的生命周期</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function fn() &#123;</div><div class="line">            // 这个变量，从fn调用时定义，到函数执行完毕结束。</div><div class="line">            var val = 10;</div><div class="line">        &#125;</div><div class="line">        fn();</div></pre></td></tr></table></figure>
-<ul>
-<li>二般情况可以通过闭包实现</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">function fn() &#123;</div><div class="line">            var a = 1;</div><div class="line">            // 当fn执行完毕后，因为匿名函数需要使用局部变量a,</div><div class="line">            // 所以造成a变量没有释放。</div><div class="line">            // 总结：闭包可以延长局部变量的生命周期</div><div class="line">            return function () &#123;</div><div class="line">                console.log(a);</div><div class="line">            &#125;;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        var f = fn();</div><div class="line">        f();</div><div class="line">        f();</div><div class="line">```   </div><div class="line"> </div><div class="line">&gt;  因为f变量一直存储着一个闭包函数，js解析引擎无法得知将来是否还有调用f函数，所以f函数不会被释</div><div class="line">放，那么对应的a局部变量也不会被释放，这样就会造成内存浪费，如果将来f函数不会再使用了，最好手动</div><div class="line">给f 赋值为 null。</div></pre></td></tr></table></figure>
-<p>// 如果想要阻止a的释放，必须要借助闭包<br>        function fn() {<br>            var a = 1;<br>            return function () {<br>                return a;<br>            };<br>        }</p>
-<pre><code>var f = fn();
-var f2 = fn();
-
-// f调用和f2调用后，得到的a值，是来源与同一个a的。
-console.log(f());
-console.log(f2());
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">####闭包的应用场景</div></pre></td></tr></table></figure>
-<p> /*</p>
-<pre><code>* 1 操作私有属性(目的，为了防止其他地方对该属性进行随意修改的隐患)
-* */
-
-var total = 0;
-total+=10;
-total++;
-console.log(total);
-
-/*-----------------------------------------------*/
-function getCounter() {
-    var total = 0;
-    return function () {
-        console.log(total++);
-    }
-}
-var counter = getCounter();
-counter();
-counter();
-* 防止变量被全局污染
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">####编辑一段可以缓存数据的代码</div></pre></td></tr></table></figure>
-<p>var cache = {};</p>
-<pre><code>// 给缓存中添加数据
-function setCache(key, val) {
-    cache[key] = val;
-}
-
-// 获取缓存中指定的数据
-function getCache(key) {
-    return cache[key];
-}
-
-/*---------------------------------------------------------*/
-
-function getCacheObj() {
-    var cache = {};
-
-    // 给缓存中添加数据
-    function setCache(key, val) {
-        cache[key] = val;
-    }
-
-    // 获取缓存中指定的数据
-    function getCache(key) {
-        return cache[key];
-    }
-
-    return {
-        setCache: setCache,
-        getCache: getCache,
-    }
-}
-
-var cacheObj = getCacheObj();
-cacheObj.setCache(&apos;val&apos;, 888);
-console.log(cacheObj.getCache(&apos;val&apos;));
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">####return基本数据类型和对象的区别</div><div class="line"></div><div class="line">1. 基本数据类型</div></pre></td></tr></table></figure>
-<p>function fn() {<br>            var a = 1;<br>            return a;<br>        }</p>
-<pre><code>/*
- * fn执行结果是返回一个数值，
- * 那么a和a2分别存储返回数值的一个copy版本。
- * */
-var a = fn();
-var a2 = fn();
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">2. 对象</div></pre></td></tr></table></figure>
-<p>function fn() {<br>            var obj = {};<br>            return obj;<br>        }</p>
-<pre><code>/*
-* fn执行结果是返回一个对象的地址，
-* 那么o和o2存储是同一个对象的地址。
-* */
-var o = fn();
-var o2 = fn();
-</code></pre><p>```</p>
-
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function callback() &#123;</div><div class="line">            console.log(111);</div><div class="line">        &#125;</div><div class="line">        // setTimeout是全局下的一个函数,</div><div class="line">        // 第一个参数要求是回调函数</div><div class="line">        // 传入setTimeout的回调函数，是异步执行的(即：不是随着代码的顺序执行)。</div><div class="line">        setTimeout(callback, 0);</div><div class="line">        console.log(222);</div><div class="line">        for ( var i = 0; i &lt; 10; i++ ) &#123;</div><div class="line">            console.log(i);</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
         
         
         <p class="article-more-link">
@@ -1940,7 +1992,7 @@ var o2 = fn();
         <header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2015/01/14/面向对象/2016.10.12面向对象第七天 补充/" title="面向对象 第七天补充" itemprop="url">面向对象 第七天补充</a>
+      <a href="/2015/01/14/面向对象/call apply/" title="面向对象  call、apply、bind" itemprop="url">面向对象  call、apply、bind</a>
   </h1>
   <p class="article-author">By
        
@@ -1953,85 +2005,33 @@ var o2 = fn();
 </header>
     <div class="article-content">
         
-        <h2 id="一、需求（例题）"><a href="#一、需求（例题）" class="headerlink" title="一、需求（例题）"></a>一、需求（例题）</h2><ul>
-<li>如果传入一个基本数据类型，则返回则数据的类型字符串描述，要求全部小写; [toc]</li>
-<li>如果传入一个对象类型，则返回则对象的类型字符串描述，要求首字母大写;</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">function getType(data)&#123;</div><div class="line">  //如果data不等于自己，那data就是NaN</div><div class="line">  //如果data全等于null，那data就是null</div><div class="line">  //使用typeof可以判断string、boolean、number、undefined</div><div class="line">  //最后剩下的对象，统一使用(&#123;&#125;).toString方法获取</div><div class="line">  //NaN</div><div class="line">  if(data!==data)&#123;</div><div class="line">        return &quot;NaN&quot;;</div><div class="line">  &#125;else if(data===null)&#123;</div><div class="line">        return &quot;null&quot;;</div><div class="line">  &#125;else if(typeof data !==&quot;object&quot; &amp;&amp; typeof data !==&quot;function&quot;)&#123;</div><div class="line">         return typeof data;</div><div class="line">  &#125;else&#123;</div><div class="line">        return (&#123;&#125;).toString.call(data).slice(8,-1);  外面的括号为什么存在？</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>##二、Function.prototype</p>
-<blockquote>
-<p>Function.prototype自身是一个函数，并且是唯一一个没有prototype属性的函数。</p>
-<p>Function.prototype上定义了一下属性及方法</p>
+        <blockquote>
+<p>这三个方法都是来自于Function.prototype上，所以所有的函数都可以使用。<br>他们有一个共同点，就是可以指定函数执行时内部this的指向。<br>call和apply的区别在于参数的方式。<br>bind和前两个方法的区别在于，bind不会马上执行函数，而是返回一个函数，供以后调用。</p>
 </blockquote>
+<h2 id="call"><a href="#call" class="headerlink" title="call"></a>call</h2><blockquote>
+<p>语法：函数名.call( this指向，实参1, 实参2…. )</p>
+</blockquote>
+<h2 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h2><blockquote>
+<p>语法1：函数名.apply( this指向，[实参1, 实参2….] )<br>语法2：函数名.apply( this指向，{0: 实参1, 1: 实参2, length: 2} )</p>
+</blockquote>
+<h2 id="bind"><a href="#bind" class="headerlink" title="bind"></a>bind</h2><blockquote>
+<p>语法：var fn = 函数名.bind( this指向，要绑定的实参1, 要绑定的实参2…. );</p>
+</blockquote>
+<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><blockquote>
+<p>严格模式分为全局模式和局部模式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 全局模式，就是在全局代码的最前面写上下面这句话</div><div class="line">&apos;use strict&apos;;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">// 局部模式，就是在函数代码的最前面写上下面这句话</div><div class="line">function fn() &#123;</div><div class="line">    &apos;use strict&apos;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <ul>
-<li>apply：方法，可以改变函数执行时内部的this的指向</li>
-<li>arguement：被废弃了</li>
-<li>bind：方法 返回一个函数的copy版本，并且可以指定该函数执行时内部this的指向</li>
-<li>call: 方法，可以改变函数的执行时内部this的指向</li>
+<li>必须通过var定义变量</li>
+<li>对象中不能存在重复的属性名</li>
+<li>函数中不能存在重复的形参名</li>
+<li>eval会产生单独的作用域，避免了全局变量的产生。</li>
+<li>无法在非函数的代码块中声明函数了</li>
+<li>禁止使用with语句</li>
+<li>禁止使用函数的caller属性</li>
+<li>禁止使用arguments的callee属性</li>
 </ul>
 
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-<div class="article-categories">
-  <span></span>
-  <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
-</div>
-
-
-  <div class="article-tags">
-  
-  <span></span> <a href="/tags/hexo/">hexo</a>
-  </div>
-
-</div>
-
-
-
-
-<div class="comments-count">
-	
-</div>
-
-</footer>
-
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2015/01/14/面向对象/day 06/" title="面向对象第六天" itemprop="url">面向对象第六天</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="Coldfont" target="_blank" itemprop="author">Coldfont</a>
-		
-  <p class="article-time">
-    <time datetime="2015-01-14T12:37:51.000Z" itemprop="datePublished"> 发表于 2015-01-14</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <h4 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout"></a>setTimeout</h4><blockquote>
-<p>异步执行</p>
-</blockquote>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function callback() &#123;</div><div class="line">            console.log(111);</div><div class="line">        &#125;</div><div class="line">        // setTimeout是全局下的一个函数,</div><div class="line">        // 第一个参数要求是回调函数</div><div class="line">        // 传入setTimeout的回调函数，是异步执行的(即：不是随着代码的顺序执行)。</div><div class="line">        setTimeout(callback, 0);</div><div class="line">        console.log(222);</div><div class="line">        for ( var i = 0; i &lt; 10; i++ ) &#123;</div><div class="line">            console.log(i);</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
         
         
         <p class="article-more-link">
