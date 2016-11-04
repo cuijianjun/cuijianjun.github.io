@@ -1,0 +1,656 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>面向对象 第一天 | 1000 words a Day</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Coldfont">
+    
+
+    
+    <meta name="description" content="arguments
+关键字，通过他可以通过下标的方式获得所有的实参
+length属性:用来获取实参的个数
+arguments，是数组，
+arguments 类似与这个样子：{  0: ‘实参1’, 1: ‘实参2’, length: 2 }
+
+123456789计算任意数据的和        function count( ) &amp;#123;            var result = 0;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="面向对象 第一天">
+<meta property="og:url" content="http://yoursite.com/2015/01/14/面向对象/day01面向对象的基本概念及注意事项/index.html">
+<meta property="og:site_name" content="1000 words a Day">
+<meta property="og:description" content="arguments
+关键字，通过他可以通过下标的方式获得所有的实参
+length属性:用来获取实参的个数
+arguments，是数组，
+arguments 类似与这个样子：{  0: ‘实参1’, 1: ‘实参2’, length: 2 }
+
+123456789计算任意数据的和        function count( ) &amp;#123;            var result = 0;">
+<meta property="og:updated_time" content="2016-11-04T09:04:54.069Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="面向对象 第一天">
+<meta name="twitter:description" content="arguments
+关键字，通过他可以通过下标的方式获得所有的实参
+length属性:用来获取实参的个数
+arguments，是数组，
+arguments 类似与这个样子：{  0: ‘实参1’, 1: ‘实参2’, length: 2 }
+
+123456789计算任意数据的和        function count( ) &amp;#123;            var result = 0;">
+
+    
+    <link rel="alternative" href="/atom.xml" title="1000 words a Day" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="1000 words a Day" title="1000 words a Day"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="1000 words a Day">1000 words a Day</a></h1>
+				<h2 class="blog-motto">Writing 1000 Words a Day Changes My Life</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/01/14/面向对象/day01面向对象的基本概念及注意事项/" title="面向对象 第一天" itemprop="url">面向对象 第一天</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Coldfont" target="_blank" itemprop="author">Coldfont</a>
+		
+  <p class="article-time">
+    <time datetime="2015-01-14T12:37:51.000Z" itemprop="datePublished"> 发表于 2015-01-14</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#arguments"><span class="toc-number">1.</span> <span class="toc-text">arguments</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类"><span class="toc-number">2.</span> <span class="toc-text">类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#实例的类型"><span class="toc-number">2.1.</span> <span class="toc-text">实例的类型</span></a></li></ol></li></ol>
+		
+		</div>
+		
+		<h4 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h4><ul>
+<li>关键字，通过他可以通过下标的方式获得所有的实参</li>
+<li>length属性:用来获取实参的个数</li>
+<li>arguments，是数组，</li>
+<li>arguments 类似与这个样子：{  0: ‘实参1’, 1: ‘实参2’, length: 2 }</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">计算任意数据的和</div><div class="line">        function count( ) &#123;</div><div class="line">            var result = 0;</div><div class="line">            for ( var i = 0; i &lt; arguments.length; i++ ) &#123;</div><div class="line">                result += arguments[i];</div><div class="line">            &#125;</div><div class="line">            console.log(result);</div><div class="line">        &#125;</div><div class="line">        count(1,2,3,4,5,234,3467,4564,234)</div></pre></td></tr></table></figure>
+<p>####伪数组</p>
+<blockquote>
+<p>拥有length属性，<br>以下标储存数据的对象</p>
+</blockquote>
+<p>####throw</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">写一个函数，函数接收一个参数并打印，如果参数的值是null或undefined，则报错。</div><div class="line">        function con( par ) &#123;</div><div class="line">            if ( par == null ) &#123;</div><div class="line">                throw &apos;参数错误！&apos; + par;</div><div class="line">            &#125;</div><div class="line">            console.log( par );</div><div class="line">        &#125;</div><div class="line">        //con(null);</div><div class="line">        //con(undefined);</div><div class="line">        con(111);</div><div class="line">        con(&apos;acb&apos;);</div></pre></td></tr></table></figure>
+<p>####工厂模式</p>
+<blockquote>
+<p>该方法可以获取狗对象这种把创建对象封装起来的方式。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function getDog(name, color) &#123;</div><div class="line">    var dog = new Object();</div><div class="line">    dog.name = name;</div><div class="line">    dog.color = color;</div><div class="line">    dog.say = function say() &#123;</div><div class="line">        console.log(&apos;旺旺&apos;);</div><div class="line">    &#125;;</div><div class="line">    return dog;</div><div class="line">&#125;</div><div class="line">var aLaSiJia = getDog(&apos;阿拉斯加&apos;, &apos;黑白相间&apos;);</div><div class="line">var jinMao = getDog(&apos;金毛&apos;, &apos;黄色&apos;);</div></pre></td></tr></table></figure>
+<p>####构造函数</p>
+<blockquote>
+<p>构造函数只是函数的另外一个称呼，和普通函数无异；<br>如果一个普通函数，专门是用来配合new关键字创建对象的，<br>那么这个函数就可以称之为构造函数。<br>如果一个函数想当做构造函数使用，那么有一个潜规则就是函数名的首字母大写。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">function Dog(name, color) &#123;</div><div class="line">    this.name = name;</div><div class="line">    this.color = color;</div><div class="line">    this.say = function say() &#123;</div><div class="line">        console.log(&apos;旺旺&apos;);</div><div class="line">    &#125;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="类"><a href="#类" class="headerlink" title="类"></a>类</h4><ul>
+<li>就是对一些具有相同特征与特性的对象的抽象描述。</li>
+<li>在ES6之前，可以把构造函数看作是类。</li>
+</ul>
+<h5 id="实例的类型"><a href="#实例的类型" class="headerlink" title="实例的类型"></a>实例的类型</h5><ul>
+<li>实例的类型就是构造函数的名字。</li>
+</ul>
+<p>####工厂函数与构造函数的区别</p>
+<blockquote>
+<p>工厂函数与构造函数的区别：<br>工厂函数把通过构造函数创建对象的过程，进行了封装。<br>也就是说，工厂函数依赖构造函数。<br>工厂函数和构造函数起始都是普通函数，<br>只不过因为他们的作用不用，<br>从而产生了不用的称呼而已。</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">// 构造函数，配合new关键字可以创建对象</div><div class="line">function Dog(name, color) &#123;</div><div class="line">    this.name = name;</div><div class="line">    this.color = color;</div><div class="line">    this.say = function say() &#123;</div><div class="line">        console.log(&apos;旺旺&apos;);</div><div class="line">    &#125;;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 工厂函数，就是把创建对象的过程进行了封装</div><div class="line">function getDog(name, color) &#123;</div><div class="line">    var dog = new Dog(name, color);</div><div class="line">    return dog;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>####面向对象概念</p>
+<blockquote>
+<p>面向过程的概念：想到哪写哪，凡事亲力亲为，自己单干。面向对象的概念：利用对象解决问题，本质上就是对面向过程的封装。面向对象的好处是代码的重复利用，和函数很相似；面向对象可以认为是比函数封装更高一层的封装。<br>js对面向对象编程思想提供的支持：可以编写构造函数，然后利用构造函数构建出各种对象，利用这些对象帮我们解决问题。</p>
+</blockquote>
+<p>#####利用js创建一些人对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">// 构造函数，专门用来创建人对象</div><div class="line">        function Person(name, age, sex) &#123;</div><div class="line">            this.name = name;</div><div class="line">            this.age = age;</div><div class="line">            this.sex = sex;</div><div class="line">            this.eat = function () &#123;</div><div class="line">                console.log(&apos;必须吃！&apos;);</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // 工厂函数，把创建人对象的过程进行了封装</div><div class="line">        function getPerson(name, age, sex) &#123;</div><div class="line">            return new Person(name, age, sex);</div><div class="line">        &#125;</div><div class="line"></div><div class="line">        // 创建一个谢娜对象</div><div class="line">        var xieNa = getPerson(&apos;谢娜&apos;, 18, &apos;女&apos;);</div><div class="line">        xieNa.eat();</div></pre></td></tr></table></figure>
+<p>####类的概念</p>
+<blockquote>
+<p>类是对一些具有相同特征与特性对象的抽象描述   构造函数中，把某种具有相同特征与特性的对象进行了一个抽象描述,所以可以把js的构造函数看作是类(类可以认为是一个模子或者是模版,通过它可以创建出具有相同特征的对象)</p>
+</blockquote>
+<p>####实例</p>
+<blockquote>
+<p>通过构造函数创建出来的对象，就叫实例</p>
+</blockquote>
+<ul>
+<li><p>实例和对象的关系</p>
+<ul>
+<li>没有可比行，都是对一个东西的称呼和描述，只不过角度不同罢了</li>
+</ul>
+</li>
+</ul>
+<p>####<strong>proto</strong></p>
+<blockquote>
+<ol>
+<li>每一个对象都有一个<strong>proto</strong>属性。通过构造函数创建的实例对象，都会带有一个<strong>proto</strong>属性，这个属性的值与构造函数prototype属性的值一致，都存储着同一个对象的地址。</li>
+<li><strong>proto</strong>相当是一个记录着宝藏存放的地址的属性；所有的对象都有这个属性，每当我们访问一个对象的属性或方法，那么首先会在自身去找，找不到就去顺着<strong>proto</strong>找宝藏，宝藏没有再继续顺序<strong>proto</strong>找下一个宝藏，直到终点。</li>
+<li>Person.prototype里面存储的东西，就是为了让实例共享，得到节省内存的目的</li>
+</ol>
+</blockquote>
+<p>####原型属性的称呼</p>
+<blockquote>
+<p>在js中，有两个属性都会指向原型对象，</p>
+<ol>
+<li>一个是prototype属性，我们称这个属性为显示原型(原型属性)；</li>
+<li>一个是<strong>proto</strong>属性，我们称这个属性为隐式原型(原型对象)；</li>
+</ol>
+</blockquote>
+<p>####对象的属性查找规则：</p>
+<ol>
+<li>每当我们访问一个对象的属性或方法时，</li>
+<li>那么首先会在对象自身上找，</li>
+<li>找不到就去顺着<strong>proto</strong>找，</li>
+<li>没有再继续顺序<strong>proto</strong>找，</li>
+<li>直到终点。</li>
+</ol>
+<p>####继承</p>
+<ul>
+<li>一个对象可以使用另一个对象的东西，就叫继承</li>
+<li>一个对象可以使用本不属于自己的东西，就叫继承</li>
+<li>继承的本质就是代码的复用,js中的原型就是对继承特性的实现</li>
+<li>js中的原型就是为了让代码复用，所以原型就是js对继承这个特性的实现,一句话：在js中，原型就是继承</li>
+<li>实例的<strong>proto</strong>属性，我们有时候会称它为实例的原型对象</li>
+</ul>
+<p>####继承方式</p>
+<blockquote>
+<p>下面记录的继承方式都是基于原型的，然后融入了一些程序猿自己的编程思想，从而引出了多种继承方式</p>
+</blockquote>
+<ul>
+<li>默认的原型继承( 很常用 )</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">function Fn()&#123;&#125;</div><div class="line">Fn.prototype.value=100;</div><div class="line">var fn=new Fn();</div></pre></td></tr></table></figure>
+<ul>
+<li>覆写构造函数的显式原型( 很常用 ) </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function Fn()&#123;&#125;</div><div class="line">Fn.prototype=&#123;</div><div class="line">    value:100;</div><div class="line">&#125;</div><div class="line">var fn=new Fn();</div></pre></td></tr></table></figure>
+<ul>
+<li>给显式原型混入属性( 很常用 ) </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function extend(o1,o2)&#123;</div><div class="line">    for(var key in  o2)&#123;</div><div class="line">        o1[key]=o2[key];</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">var obj=&#123;add:function(a,b)&#123;console.log(a+b)&#125;&#125;;</div><div class="line">function Fn()&#123;&#125;;</div><div class="line">extend(Fn.prototype,obj);</div><div class="line">extend(Fn.prototype,&#123;value:100&#125;)</div><div class="line">var fn=new Fn();</div></pre></td></tr></table></figure>
+<ul>
+<li>Object.create( 很少用 ) </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var obj= &#123;value:100&#125;;</div><div class="line">var newObj=Object.create(obj);</div></pre></td></tr></table></figure>
+<ul>
+<li>借用Object.create方法覆写显式原型( 很少用 )<br>语法：Object.create( 被继承的对象 );<br>返回值：返回一个新对象，新对象继承 传入 到create方法的对象。<br>作用是指定创建一个新对象，并且指定新对象的继承的对象</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">var obj=&#123;value:100&#125;;</div><div class="line">function Fn()&#123;&#125;；</div><div class="line">Fn.prototype=Object.create(obj);</div><div class="line">var fn = new Fn();</div></pre></td></tr></table></figure>
+<ul>
+<li>复合式原型继承( 很少用 ) </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">function PrFn()&#123;&#125;</div><div class="line">PrFn.prototype.value=100;</div><div class="line">function Fn()&#123;&#125;</div><div class="line">Fn.prototype=new PrFn();</div><div class="line">//实例继承Fn.prototype,Fn.prototype继承了PrFn.prototype,最终实例间接继承了PRFn.prototype</div><div class="line">var fn=new Fn();</div></pre></td></tr></table></figure>
+<p>####注意事项</p>
+<ul>
+<li>构造函数有一个prototype属性，实例可以共享里面的东西，而构造函数自身无法访问里面的东西</li>
+<li>构造函数添加的方法，只能自己调用</li>
+<li>实例添加的方法只能自己调用</li>
+<li>只有函数才拥有prototype属性，因为prototype属性的作用就是为了让实例共享，而只有函数才可以创造出实例，也就是说prototype只有放在函数上才会凸显出它的作用</li>
+<li>任何对象都有<strong>proto</strong>属性</li>
+<li>内置的属性不可枚举，无法用for in去遍历</li>
+<li>Person的实例可以使用obj里面的方法</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">可以考虑把obj对象里面的方法copy到Person的显式原型中，达到实例共享的目的，完成需求</div><div class="line">for ( var key in obj ) &#123;</div><div class="line">            Person.prototype[key] = obj[key];</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+<ul>
+<li>extend方法<blockquote>
+<p>该方法会第二个对象的属性copy到第一个对象<br>  本质上是把多个对象的属性依次copy到原型对象中</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">function extend(o1,o2)&#123;</div><div class="line">    for(var key in o2)&#123;</div><div class="line">        o1[key]=o2[key];</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>####属性继承</p>
+<blockquote>
+<p>这种代码复用的方式：有地方叫它 对象冒充，也叫属性盗窃，也叫属性继承，最简单明了好理解的叫法是：构造函数借用</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">需求：Person的实例可以使用Animal原型里面的方法</div><div class="line"> function Person(name, age, sex) &#123;</div><div class="line"> // 借用Animal函数，给Person实例添加属性</div><div class="line">  this.__Animal__ = Animal;</div><div class="line">  // 调用Animal函数时，里的this指向了当前Person的实例</div><div class="line">  this.__Animal__(name, age, sex);</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<p>####静态成员与实例成员</p>
+<blockquote>
+<p>添加给实例的属性或者方法，就叫实例成员<br>添加给类自己的属性或者方法叫静态成员（类成员）</p>
+<pre><code>- 类原型上的方法，本意也是给实例使用的，所以也可以认为是实例成员
+</code></pre><pre><code>// 这是构造函数，也是类
+       function Person(name, age) {
+           // 这里的name和age属性，因为将来要添加到实例身上，
+           // 所以也称之为实例成员(实例属性)
+           this.name = name;
+           this.age = age;
+       }
+</code></pre></blockquote>
+<ul>
+<li>直接添加到类上的属性或者方法叫静态成员或者类成员<ul>
+<li>静态成员（类成员）只能由构造函数自己访问</li>
+<li>构造函数内添加的实例成员，也只有实例可以访问<blockquote>
+<p>Person.maxAge=200;</p>
+</blockquote>
+</li>
+</ul>
+</li>
+</ul>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/面向对象/">面向对象</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/hexo/">hexo</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2015/01/14/面向对象/day01面向对象的基本概念及注意事项/" data-title="面向对象 第一天 | 1000 words a Day" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2015/01/15/面向对象/day04/" title="面向对象第四天">
+  <strong>上一篇：</strong><br/>
+  <span>
+  面向对象第四天</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/01/14/面向对象/day03/"  title="面向对象第三天">
+ <strong>下一篇：</strong><br/> 
+ <span>面向对象第三天
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#arguments"><span class="toc-number">1.</span> <span class="toc-text">arguments</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#类"><span class="toc-number">2.</span> <span class="toc-text">类</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#实例的类型"><span class="toc-number">2.1.</span> <span class="toc-text">实例的类型</span></a></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/canvas/" title="canvas">canvas<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/面向对象/" title="面向对象">面向对象<sup>8</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>9</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Coldfont">Coldfont</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>

@@ -1,0 +1,568 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>1canvas基本语法 | 1000 words a Day</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="Coldfont">
+    
+
+    
+    <meta name="description" content="1.1canvas基本语法1.1.1 基本操作12var     cvs = document.getElementById(&amp;apos;cvs&amp;apos;);//获取画布        var ctx = cvs.getContext(&amp;apos;2d&amp;apos;);//获取画笔
+####1.1.2 设置画布大小
+
+通过行内或者html，不能通过css去设置，会导致变形
+
+1&amp;lt;canvas">
+<meta property="og:type" content="article">
+<meta property="og:title" content="1canvas基本语法">
+<meta property="og:url" content="http://yoursite.com/2015/01/19/canvas/canvas01/index.html">
+<meta property="og:site_name" content="1000 words a Day">
+<meta property="og:description" content="1.1canvas基本语法1.1.1 基本操作12var     cvs = document.getElementById(&amp;apos;cvs&amp;apos;);//获取画布        var ctx = cvs.getContext(&amp;apos;2d&amp;apos;);//获取画笔
+####1.1.2 设置画布大小
+
+通过行内或者html，不能通过css去设置，会导致变形
+
+1&amp;lt;canvas">
+<meta property="og:updated_time" content="2016-11-04T09:08:19.694Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="1canvas基本语法">
+<meta name="twitter:description" content="1.1canvas基本语法1.1.1 基本操作12var     cvs = document.getElementById(&amp;apos;cvs&amp;apos;);//获取画布        var ctx = cvs.getContext(&amp;apos;2d&amp;apos;);//获取画笔
+####1.1.2 设置画布大小
+
+通过行内或者html，不能通过css去设置，会导致变形
+
+1&amp;lt;canvas">
+
+    
+    <link rel="alternative" href="/atom.xml" title="1000 words a Day" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.png" alt="1000 words a Day" title="1000 words a Day"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="1000 words a Day">1000 words a Day</a></h1>
+				<h2 class="blog-motto">Writing 1000 Words a Day Changes My Life</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+						<li><a href="/about">About</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2015/01/19/canvas/canvas01/" title="1canvas基本语法" itemprop="url">1canvas基本语法</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="Coldfont" target="_blank" itemprop="author">Coldfont</a>
+		
+  <p class="article-time">
+    <time datetime="2015-01-19T12:37:51.000Z" itemprop="datePublished"> 发表于 2015-01-19</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1canvas基本语法"><span class="toc-number">1.</span> <span class="toc-text">1.1canvas基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-基本操作"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.1.1 基本操作</span></a></li></ol></li></ol></li></ol>
+		
+		</div>
+		
+		<h2 id="1-1canvas基本语法"><a href="#1-1canvas基本语法" class="headerlink" title="1.1canvas基本语法"></a>1.1canvas基本语法</h2><h4 id="1-1-1-基本操作"><a href="#1-1-1-基本操作" class="headerlink" title="1.1.1 基本操作"></a>1.1.1 基本操作</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">var     cvs = document.getElementById(&apos;cvs&apos;);//获取画布</div><div class="line">        var ctx = cvs.getContext(&apos;2d&apos;);//获取画笔</div></pre></td></tr></table></figure>
+<p>####1.1.2 设置画布大小</p>
+<blockquote>
+<p>通过行内或者html，不能通过css去设置，会导致变形</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;canvas id=&quot;cvs&quot; width=&quot;500&quot; height=&quot;500&quot;&gt;&lt;/canvas&gt;</div></pre></td></tr></table></figure>
+<p>####1.1.3 非零环绕原则</p>
+<blockquote>
+<p>原理：随便找一块封闭的区域，然后在区域随便找一点，向外发一条射线， 然后会继续计数判断，初始值为0， 如果射线遇到边，这条边相当于点是逆时针，那么-1，顺时针+1，最终结果非0，那么就认为这块区域是被环绕起来的。</p>
+</blockquote>
+<p>####1.1.4 基本绘图命令</p>
+<ul>
+<li>设置开始绘图的位置: <code>ctx.moveTo( x, y )</code>.</li>
+<li>设置直线到的位置: <code>ctx.lineTo( x, y )</code>.</li>
+<li>描边绘制: <code>ctx.stroke()</code>.</li>
+<li>设置填充颜色<code>ctx.fillStyle = &#39;yellow&#39;</code>;</li>
+<li>填充绘制: <code>ctx.fill()</code>.//根据路径进行填充</li>
+<li>闭合路径: <code>ctx.closePath()</code>.</li>
+<li>用来画矩形路径的: <code>ctx.rect( x, y, w, h )</code>.</li>
+<li>用来绘制描边矩形，不会产生任何路径: <code>ctx.strokeRect( x, y, w, h )</code>.</li>
+<li>用来绘制填充矩形，不会产生任何路径: <code>ctx.fillRect( x, y, w, h )</code>.</li>
+<li>清除矩形区域<code>ctx.clearRect</code></li>
+<li>设置描边色: <code>ctx.strokeStyle</code> = <code>&quot;颜色单词、rgb、rgba、css支持的方式这里都支持&quot;</code></li>
+<li>清理之前的路径：<code>ctx.beginPath()</code>; 为了防止重绘之前的路径，先把他们清除掉</li>
+<li>当前路径的结束点和起点连一条路径 <code>ctx.closePath()</code>;  </li>
+<li><code>ctx.lineWidth</code> 设置线宽.</li>
+<li><code>ctx.lineCap</code> 设置线末端类型.<ul>
+<li>设置线型末端的样式, 可取值为: ‘butt’( 默认 ), ‘round’, ‘square’.</li>
+<li>‘butt’ 表示两端使用方形结束.</li>
+<li>‘round’ 表示两端使用圆角结束.</li>
+<li>‘square’ 表示突出的圆角结束.</li>
+</ul>
+</li>
+<li><code>ctx.lineJoin</code> 设置相交线的拐点.<ul>
+<li>设置两条直线的拐点描述方式. 可以取值 ‘round’, ‘bevel’, ‘miter’(默认)</li>
+<li>‘round’ 使用圆角连接.</li>
+<li>‘bevel’ 使用平切连接.</li>
+<li>‘miter’ 使用直角转.</li>
+</ul>
+</li>
+<li>如果线帽与交点样式不一致，优先按照交点样式处理。</li>
+<li><code>ctx.getLineDash()</code> 获得线段样式数组.</li>
+<li><code>ctx.setLineDash()</code> 设置线段样式.</li>
+<li><code>ctx.lineDashOffset</code> 绘制线段偏移量.<blockquote>
+<p><code>lineDashOffset</code> 用于设置开始绘制虚线的偏移量. 数字的正负表示左右偏移.<br><code>getLineDash()</code> 与 <code>setLineDash()</code> 方法使用数组描述实线与虚线的长度.</p>
+</blockquote>
+</li>
+</ul>
+<p>####1.1.5 基本例子</p>
+<blockquote>
+<p>等腰三角形</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">var cvs = document.getElementById(&apos;cvs&apos;);</div><div class="line">    var ctx = cvs.getContext(&apos;2d&apos;);</div><div class="line">    ctx.moveTo(100, 100);</div><div class="line">    ctx.lineTo(100 + 50 / 2, 100 + 50);</div><div class="line">    ctx.lineTo(100 - 50 / 2, 100 + 50);</div><div class="line">    ctx.lineTo(100, 100);</div><div class="line">    ctx.strokeStyle = &apos;skyblue&apos;;</div><div class="line">    ctx.stroke();</div></pre></td></tr></table></figure>
+<blockquote>
+<p>封装等腰三角形（函数）</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">function strokeSJX( x, y, w, h, style ) &#123;</div><div class="line">        ctx.beginPath();   // 为了防止重绘之前的路径，先把他们清除掉</div><div class="line">        ctx.moveTo(x, y);</div><div class="line">        ctx.lineTo(x + w / 2, y + h);</div><div class="line">        ctx.lineTo(x - w / 2, y + h);</div><div class="line">        ctx.lineTo(x, y);</div><div class="line">        ctx.strokeStyle = style;</div><div class="line">        ctx.stroke();</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    strokeSJX( 100, 100, 100, 50, &apos;red&apos; );</div></pre></td></tr></table></figure>
+<blockquote>
+<p>封装渐变矩形</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">function JX( x, y, w, h, direction ) &#123;</div><div class="line">    var i = 0, lineNum;</div><div class="line">    // 如果是横方式，线的总数为宽度；</div><div class="line">    // 如果是竖方式，线的总数为高度。</div><div class="line">    lineNum = direction === &apos;h&apos;? w : h;</div><div class="line">    // 分别画每一条不同颜色的线，共同组成一个渐变矩形</div><div class="line">    for ( ; i &lt; lineNum; i++ ) &#123;</div><div class="line">        ctx.beginPath();</div><div class="line">        if ( direction === &apos;h&apos; ) &#123;</div><div class="line">            ctx.moveTo( x + i, y);</div><div class="line">            ctx.lineTo( x + i, y + h);</div><div class="line">        &#125;else &#123;</div><div class="line">            ctx.moveTo( x, y + i);</div><div class="line">            ctx.lineTo( x + w, y + i);</div><div class="line">        &#125;</div><div class="line">        ctx.strokeStyle = &apos;rgb(&apos; + Math.ceil(255 / lineNum * i) + &apos;, 0, 0)&apos;;</div><div class="line">        ctx.stroke();</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line">// 测试</div><div class="line">JX( 10, 10, 100, 100, &apos;h&apos; );</div><div class="line">JX( 210, 10, 80, 100 );</div></pre></td></tr></table></figure>
+<blockquote>
+<p>网格</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">* 画网格，</div><div class="line">* 先画N多横线，</div><div class="line">* 再画N多竖线。</div><div class="line">// 画宽为10，高为10的网格</div><div class="line">var w = 10, h = 10,</div><div class="line">    cvsW = cvs.width,</div><div class="line">    cvsH = cvs.height;</div><div class="line">// 先画横线</div><div class="line">for ( var i = 1, num = cvsH / h; i &lt; num; i++ ) &#123;</div><div class="line">    ctx.moveTo( 0, h * i );</div><div class="line">    ctx.lineTo( cvsW, h * i );</div><div class="line">&#125;</div><div class="line">// 再画竖线</div><div class="line">for ( var i = 1, num = cvsW / w; i &lt; num; i++ ) &#123;</div><div class="line">    ctx.moveTo( w * i, 0 );</div><div class="line">    ctx.lineTo( w * i, cvsH );</div><div class="line">&#125;</div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
+<blockquote>
+<p>在自定义的坐标里画点</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">// 定义坐标轴距离画布的边距</div><div class="line">var paddingLeft = 10;</div><div class="line">var paddingTop = 10;</div><div class="line">var paddingRight = 10;</div><div class="line">var paddingBottom = 10;</div><div class="line">// 箭头的宽高</div><div class="line">var arrow = &#123;</div><div class="line">    w: 10,</div><div class="line">    h: 20</div><div class="line">&#125;;</div><div class="line">// 先画坐标轴中的竖线</div><div class="line">// 竖线的顶点坐标为( paddingLeft, paddingTop );</div><div class="line">// 原点的坐标为( paddingLeft, cvs.height -  paddingBottom );</div><div class="line">// 横线的顶点坐标为( cvs.width - paddingRight, cvs.height -  paddingBottom );</div><div class="line">var s = &#123;</div><div class="line">    x: paddingLeft,</div><div class="line">    y: paddingTop</div><div class="line">&#125;;</div><div class="line">var o = &#123;</div><div class="line">    x: paddingLeft,</div><div class="line">    y: cvs.height -  paddingBottom</div><div class="line">&#125;;</div><div class="line">var h = &#123;</div><div class="line">    x: cvs.width - paddingRight,</div><div class="line">    y: cvs.height -  paddingBottom</div><div class="line">&#125;;</div><div class="line">// 画坐标轴的两条线</div><div class="line">ctx.moveTo( s.x, s.y );</div><div class="line">ctx.lineTo( o.x, o.y );</div><div class="line">ctx.lineTo( h.x, h.y );</div><div class="line">// 先画竖线箭头</div><div class="line">ctx.moveTo( s.x, s.y );</div><div class="line">ctx.lineTo( s.x - arrow.w / 2, s.y + arrow.h );</div><div class="line">ctx.moveTo( s.x, s.y );</div><div class="line">ctx.lineTo( s.x + arrow.w / 2, s.y + arrow.h );</div><div class="line">// 再画横线箭头</div><div class="line">ctx.moveTo( h.x, h.y );</div><div class="line">ctx.lineTo( h.x - arrow.h, h.y - arrow.w / 2 );</div><div class="line">ctx.moveTo( h.x, h.y );</div><div class="line">ctx.lineTo( h.x - arrow.h, h.y + arrow.w / 2 );</div><div class="line">ctx.stroke();</div><div class="line">/*</div><div class="line">* 在10，10位置画一点:</div><div class="line">* 该点坐标的算法：</div><div class="line">* x轴 = 原点的x轴 + 该点和原点的距离</div><div class="line">* y轴 = 原点的y轴 - 该点和原点的距离</div><div class="line">* */</div><div class="line">// ctx.fillRect( o.x + 10, o.y - 10, 1, 1 );</div><div class="line">/*</div><div class="line">* 需求：在自定义的坐标轴中画N多点</div><div class="line">* */</div><div class="line">var points = [ 10, 10, 30, 30, 50, 30, 70, 40, 110, 150 ];</div><div class="line">for ( var i = 0, len = points.length; i &lt; len; i+=2 ) &#123;</div><div class="line">    ctx.fillRect( o.x + points[i], o.y - points[i+1], 3, 3 );</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>补充上面代码块,在上述的基础上画折线</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ctx.beginPath(); // 新开辟路径，现在就没有任何路径，以及路径的起点和结束点了。</div><div class="line">// 再画折线</div><div class="line">for ( var i = 0, len = points.length; i &lt; len; i+=2 ) &#123;</div><div class="line">    ctx.lineTo( o.x + points[i], o.y - points[i+1] );</div><div class="line">&#125;</div><div class="line">ctx.stroke();</div></pre></td></tr></table></figure>
+<blockquote>
+<p>等比例的放大折线图</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div></pre></td><td class="code"><pre><div class="line">var cvs=document.getElementById(&quot;cvs&quot;)</div><div class="line">    var ctx=cvs.getContext(&quot;2d&quot;);</div><div class="line">    var paddingLeft = 10;</div><div class="line">    var paddingTop = 10;</div><div class="line">    var paddingRight = 10;</div><div class="line">    var paddingBottom = 10;</div><div class="line">        // 箭头的宽高</div><div class="line">    var arrow = &#123;</div><div class="line">        w: 10,</div><div class="line">        h: 20</div><div class="line">    &#125;;</div><div class="line">        // 先画坐标轴中的竖线</div><div class="line">    // 竖线的顶点坐标为( paddingLeft, paddingTop );</div><div class="line">    // 原点的坐标为( paddingLeft, cvs.height -  paddingBottom );</div><div class="line">    // 横线的顶点坐标为( cvs.width - paddingRight, cvs.height -  paddingBottom );</div><div class="line">    var s = &#123;</div><div class="line">        x: paddingLeft,</div><div class="line">        y: paddingTop</div><div class="line">    &#125;;</div><div class="line">    var o = &#123;</div><div class="line">        x: paddingLeft,</div><div class="line">        y: cvs.height -  paddingBottom</div><div class="line">    &#125;;</div><div class="line">    var h = &#123;</div><div class="line">        x: cvs.width - paddingRight,</div><div class="line">        y: cvs.height -  paddingBottom</div><div class="line">    &#125;;</div><div class="line">    ctx.moveTo(s.x, s.y)</div><div class="line">    ctx.lineTo(o.x, o.y)</div><div class="line">    ctx.lineTo(h.x, h.y)</div><div class="line">    //先画竖箭头</div><div class="line">    ctx.moveTo(s.x, s.y);</div><div class="line">    ctx.lineTo(s.x-arrow.w/2, s.y+arrow.h);</div><div class="line">    ctx.moveTo(s.x, s.y);</div><div class="line">    ctx.lineTo(s.x+arrow.w/2, s.y+arrow.h);</div><div class="line">    //横箭头</div><div class="line">    ctx.moveTo(h.x, h.y);</div><div class="line">    ctx.lineTo(h.x-arrow.h, h.y-arrow.w/2);</div><div class="line">    ctx.moveTo(h.x, h.y);</div><div class="line">    ctx.lineTo(h.x-arrow.h, h.y+arrow.w/2);</div><div class="line">    ctx.stroke();</div><div class="line">    //折线点的坐标</div><div class="line">    var points = [ 10, 10, 30, 30, 50, 30, 70, 40, 110, 150 ];</div><div class="line">    //求自定义的画布的最大显示面积</div><div class="line">    var maxKD = &#123;</div><div class="line">        x: cvs.width - paddingLeft - paddingRight - arrow.h,</div><div class="line">        y: cvs.height - paddingTop - paddingBottom - arrow.h</div><div class="line">    &#125;;</div><div class="line">    //对折线点进行区别，x,y轴的数据都提出来，然后放大比例进行处理</div><div class="line">    var pointXs=[];</div><div class="line">    var pointYs=[];</div><div class="line">    for(var i= 0,len=points.length;i&lt;len;i++)&#123;</div><div class="line">        if(i%2===0)&#123;</div><div class="line">            pointXs.push(points[i])</div><div class="line">        &#125;else&#123;</div><div class="line">            pointYs.push(points[i])</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">//求折线点的最大x,y值</div><div class="line">    var pointsMaxX = Math.max.apply(null, pointXs);</div><div class="line">    var pointsMaxY = Math.max.apply(null, pointYs);</div><div class="line">//    求出比例</div><div class="line">    var ratioX = maxKD.x / pointsMaxX;</div><div class="line">    var ratioY = maxKD.y / pointsMaxY;</div><div class="line">//    画折线的点</div><div class="line">    for(var i= 0,len=points.length;i&lt;len;i+=2)&#123;</div><div class="line">        ctx.fillRect(o.x+points[i]*ratioX, o.y-points[i+1]*ratioY,4,4)</div><div class="line">    &#125;</div><div class="line">    ctx.beginPath();</div><div class="line">    for(var i= 0,len=points.length;i&lt;len;i+=2)&#123;</div><div class="line">        ctx.lineTo(o.x+points[i]*ratioX+2, o.y-points[i+1]*ratioY+2)</div><div class="line">    &#125;</div><div class="line">    ctx.stroke();</div></pre></td></tr></table></figure>  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+<div class="article-categories">
+  <span></span>
+  <a class="article-category-link" href="/categories/canvas/">canvas</a>
+</div>
+
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/hexo/">hexo</a>
+  </div>
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2015/01/19/canvas/canvas01/" data-title="1canvas基本语法 | 1000 words a Day" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2016/10/26/面向对象参考/repaty/" title="重点复习">
+  <strong>上一篇：</strong><br/>
+  <span>
+  重点复习</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2015/01/15/面向对象/day04/"  title="面向对象第四天">
+ <strong>下一篇：</strong><br/> 
+ <span>面向对象第四天
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-1canvas基本语法"><span class="toc-number">1.</span> <span class="toc-text">1.1canvas基本语法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-基本操作"><span class="toc-number">1.0.1.</span> <span class="toc-text">1.1.1 基本操作</span></a></li></ol></li></ol></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+<div class="categorieslist">
+	<p class="asidetitle">分类</p>
+		<ul>
+		
+		  
+			<li><a href="/categories/canvas/" title="canvas">canvas<sup>1</sup></a></li>
+		  
+		
+		  
+			<li><a href="/categories/面向对象/" title="面向对象">面向对象<sup>8</sup></a></li>
+		  
+		
+		</ul>
+</div>
+
+
+  
+<div class="tagslist">
+	<p class="asidetitle">标签</p>
+		<ul class="clearfix">
+		
+			
+				<li><a href="/tags/hexo/" title="hexo">hexo<sup>9</sup></a></li>
+			
+		
+		</ul>
+</div>
+
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="https://coderq.com" target="_blank" title="一个面向程序员交流分享的新一代社区">码农圈</a>
+            
+          </li>
+        
+          <li>
+            
+            	<a href="http://wuchong.me" target="_blank" title="Jark&#39;s Blog">Jark&#39;s Blog</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> Hello ,I&#39;m Larry Page in Google. <br/>
+			This is my blog,believe it or not.</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2176287895" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="Coldfont">Coldfont</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
